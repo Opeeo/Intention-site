@@ -87,7 +87,7 @@ class SlotElement extends HTMLElement {
 class SiteShell extends SlotElement {
   constructor() {
     super(`
-      :host { display: block; position: relative; overflow: clip; background: #f8f8fc; color: #161720; }
+      :host { display: block; position: relative; overflow: visible; background: #f8f8fc; color: #161720; }
       .glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(700px circle at var(--x, 75%) var(--y, 7%), #7658ff20, transparent 55%); transition: background .2s; }
       .grain { position: absolute; inset: 0; pointer-events: none; opacity: .16; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E"); }
       .content { position: relative; }
@@ -457,10 +457,10 @@ class DocumentationLayout extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.shadowRoot.innerHTML = `
       <style>
-        :host{display:block;max-width:1460px;margin:auto;padding:34px 24px 100px}
+        :host{--sticky-gap:18px;display:block;max-width:1460px;margin:auto;padding:34px 24px 100px}
         .mobile{display:none;width:100%;margin-bottom:18px;padding:12px 14px;border:1px solid #17182416;border-radius:12px;background:#fff;color:#252631;font:780 .9rem system-ui;text-align:left;cursor:pointer}
         .layout{display:grid;grid-template-columns:230px minmax(0,790px) 190px;align-items:start;justify-content:center;gap:clamp(30px,4vw,64px)}
-        aside{position:sticky;top:98px;max-height:calc(100vh - 122px);overflow:auto;scrollbar-width:thin}
+        aside{position:sticky;top:var(--sticky-gap);align-self:start;max-height:calc(100vh - var(--sticky-gap) - 24px);overflow:auto;scrollbar-width:thin;scrollbar-gutter:stable}
         .sidebar{padding-right:18px;border-right:1px solid #17182410}.toc{padding-left:2px}
         .title{display:block;margin:0 0 18px;color:#22232d;font-size:.76rem;font-weight:850;letter-spacing:.09em;text-transform:uppercase}
         .group{display:block;margin:22px 0 7px;color:#9697a3;font-size:.68rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
