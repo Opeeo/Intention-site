@@ -9,6 +9,8 @@ setBasePath(new URL("../vendor/webawesome/", import.meta.url).href);
 
 const brandLogoUrl = new URL("./intention-logo-curved.png", import.meta.url).href;
 const ribbonLogoUrl = new URL("./intention-ribbon.png", import.meta.url).href;
+const browserParserUrl = new URL("../intention-parser.js", import.meta.url).href;
+const browserRuntimeUrl = new URL("../intention-runtime.js", import.meta.url).href;
 
 function installBrandIcons() {
   const icons = [
@@ -85,7 +87,7 @@ class SlotElement extends HTMLElement {
 class SiteShell extends SlotElement {
   constructor() {
     super(`
-      :host { display: block; position: relative; overflow: hidden; background: #f8f8fc; color: #161720; }
+      :host { display: block; position: relative; overflow: clip; background: #f8f8fc; color: #161720; }
       .glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(700px circle at var(--x, 75%) var(--y, 7%), #7658ff20, transparent 55%); transition: background .2s; }
       .grain { position: absolute; inset: 0; pointer-events: none; opacity: .16; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E"); }
       .content { position: relative; }
@@ -449,6 +451,193 @@ class DocTab extends SlotElement {
   }
 }
 
+class DocumentationLayout extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host{display:block;max-width:1460px;margin:auto;padding:34px 24px 100px}
+        .mobile{display:none;width:100%;margin-bottom:18px;padding:12px 14px;border:1px solid #17182416;border-radius:12px;background:#fff;color:#252631;font:780 .9rem system-ui;text-align:left;cursor:pointer}
+        .layout{display:grid;grid-template-columns:230px minmax(0,790px) 190px;align-items:start;justify-content:center;gap:clamp(30px,4vw,64px)}
+        aside{position:sticky;top:98px;max-height:calc(100vh - 122px);overflow:auto;scrollbar-width:thin}
+        .sidebar{padding-right:18px;border-right:1px solid #17182410}.toc{padding-left:2px}
+        .title{display:block;margin:0 0 18px;color:#22232d;font-size:.76rem;font-weight:850;letter-spacing:.09em;text-transform:uppercase}
+        .group{display:block;margin:22px 0 7px;color:#9697a3;font-size:.68rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+        nav{display:grid;gap:2px}a{display:block;padding:7px 10px;border-radius:8px;color:#666876;font-size:.82rem;line-height:1.3;text-decoration:none;transition:color .18s,background .18s}
+        a:hover{color:#5437db;background:#6849f50a}a.active{color:#5437db;background:#6849f512;font-weight:780}
+        main{min-width:0}.toc nav{gap:5px}.toc a{padding:4px 0;border-radius:0;font-size:.76rem}.toc a.active{padding-left:9px;border-left:2px solid #6545f5;background:transparent}
+        @media(max-width:1120px){.layout{grid-template-columns:220px minmax(0,790px)}.toc{display:none}}
+        @media(max-width:780px){:host{padding:18px 16px 70px}.mobile{display:block}.layout{display:block}.sidebar{display:none;position:static;max-height:none;margin-bottom:24px;padding:18px;border:1px solid #17182412;border-radius:16px;background:#fff}.sidebar.open{display:block}main{width:100%}}
+      </style>
+      <button class="mobile" type="button" aria-expanded="false">Parcourir la documentation</button>
+      <div class="layout">
+        <aside class="sidebar"><strong class="title">Guide Intention</strong><nav aria-label="Chapitres"></nav></aside>
+        <main><slot></slot></main>
+        <aside class="toc"><strong class="title">Sur cette page</strong><nav aria-label="Sommaire de la page"></nav></aside>
+      </div>`;
+    this.slotElement = this.shadowRoot.querySelector("slot");
+    this.slotElement.addEventListener("slotchange", () => this.buildNavigation());
+    this.shadowRoot.querySelector(".mobile").addEventListener("click", () => {
+      const sidebar = this.shadowRoot.querySelector(".sidebar");
+      const open = sidebar.classList.toggle("open");
+      this.shadowRoot.querySelector(".mobile").setAttribute("aria-expanded", String(open));
+    });
+  }
+  connectedCallback() { queueMicrotask(() => this.buildNavigation()); }
+  disconnectedCallback() { this.observer?.disconnect(); }
+  buildNavigation() {
+    const sections = this.slotElement.assignedElements().filter((element) => element.localName === "intention-doc-section" && element.id);
+    if (!sections.length) return;
+    this.observer?.disconnect();
+    const sidebar = this.shadowRoot.querySelector(".sidebar nav");
+    const toc = this.shadowRoot.querySelector(".toc nav");
+    sidebar.replaceChildren();
+    toc.replaceChildren();
+    let currentGroup = "";
+    for (const section of sections) {
+      const group = section.getAttribute("group") || "Guide";
+      const title = section.getAttribute("title") || section.id;
+      if (group !== currentGroup) {
+        const label = document.createElement("span");
+        label.className = "group";
+        label.textContent = group;
+        sidebar.append(label);
+        currentGroup = group;
+      }
+      sidebar.append(this.navigationLink(section.id, title));
+      toc.append(this.navigationLink(section.id, title));
+    }
+    const initial = location.hash.slice(1) || sections[0].id;
+    this.setActive(initial);
+    this.observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((left, right) => left.boundingClientRect.top - right.boundingClientRect.top)[0];
+      if (visible) this.setActive(visible.target.id);
+    }, { rootMargin: "-12% 0px -72%", threshold: [0, .15, .5] });
+    sections.forEach((section) => this.observer.observe(section));
+  }
+  navigationLink(id, title) {
+    const link = document.createElement("a");
+    link.href = `#${id}`;
+    link.dataset.section = id;
+    link.textContent = title;
+    link.addEventListener("click", () => {
+      this.setActive(id);
+      this.shadowRoot.querySelector(".sidebar").classList.remove("open");
+      this.shadowRoot.querySelector(".mobile").setAttribute("aria-expanded", "false");
+    });
+    return link;
+  }
+  setActive(id) {
+    this.shadowRoot.querySelectorAll("a[data-section]").forEach((link) => link.classList.toggle("active", link.dataset.section === id));
+  }
+}
+
+class DocumentationSection extends SlotElement {
+  constructor() {
+    super(`
+      :host{display:block;padding:34px 0 70px;scroll-margin-top:88px;border-bottom:1px solid #17182410}
+      :host(:first-of-type){padding-top:20px}
+      :host(:last-of-type){border-bottom:0}
+      ::slotted(intent-eyebrow){margin-bottom:12px}
+      ::slotted(intent-section-title){max-width:760px;margin-bottom:16px;font-size:clamp(2rem,5vw,4rem)}
+      ::slotted(intent-section-lead){max-width:720px;margin-bottom:28px;font-size:1.05rem}
+      ::slotted(intent-code-window),::slotted(intention-playground),::slotted(intent-docs-grid),::slotted(intent-principles){margin-top:22px}
+      @media(max-width:600px){:host{padding-bottom:52px}}
+    `);
+  }
+}
+
+class DocumentationText extends SlotElement {
+  constructor() { super(':host{display:block;margin:16px 0;color:#555866;font-size:.98rem;line-height:1.82;text-wrap:pretty}'); }
+}
+
+class DocumentationNote extends HTMLElement {
+  static observedAttributes = ["title", "description", "tone"];
+  constructor() { super(); this.attachShadow({ mode: "open" }); }
+  connectedCallback() { this.render(); }
+  attributeChangedCallback() { if (this.isConnected) this.render(); }
+  render() {
+    const tone = this.getAttribute("tone") || "info";
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host{display:block;margin:22px 0}.note{padding:18px 20px;border:1px solid #6849f529;border-left:4px solid #6545f5;border-radius:12px;background:#6849f50b}.note.tip{border-color:#16a88335;border-left-color:#16a883;background:#16a8830b}.title{display:block;margin-bottom:5px;color:#343540;font-size:.9rem;font-weight:850}.description{color:#626573;font-size:.9rem;line-height:1.65}
+      </style>
+      <aside class="note ${escapeHtml(tone)}"><strong class="title">${escapeHtml(this.getAttribute("title") || "À retenir")}</strong><span class="description">${escapeHtml(this.getAttribute("description") || "")}</span></aside>`;
+  }
+}
+
+let playgroundSequence = 0;
+
+class IntentionPlayground extends HTMLElement {
+  static observedAttributes = ["code", "label", "description"];
+  constructor() {
+    super();
+    this.playgroundId = `intention-playground-${++playgroundSequence}`;
+    this.attachShadow({ mode: "open" });
+    this.onMessage = (event) => {
+      if (event.source !== this.frame?.contentWindow || event.data?.playground !== this.playgroundId) return;
+      this.status.textContent = event.data.ok ? "Aperçu synchronisé" : "Corrigez l’erreur indiquée";
+      this.status.classList.toggle("error", !event.data.ok);
+    };
+  }
+  connectedCallback() {
+    this.initialCode = this.getAttribute("code") || "component App:\n  heading \"Bonjour Intention\"";
+    this.renderShell();
+    window.addEventListener("message", this.onMessage);
+    this.run(this.initialCode);
+  }
+  disconnectedCallback() { window.removeEventListener("message", this.onMessage); clearTimeout(this.timer); }
+  attributeChangedCallback(name, oldValue, value) {
+    if (name === "code" && this.isConnected && oldValue !== value && this.editor) {
+      this.initialCode = value || "";
+      this.editor.value = this.initialCode;
+      this.run(this.initialCode);
+    }
+  }
+  renderShell() {
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host{display:block;margin:26px 0;border:1px solid #17182416;border-radius:20px;background:#fff;box-shadow:0 20px 55px #30275d10;overflow:hidden}
+        .head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 18px;border-bottom:1px solid #17182410;background:#fbfbfd}.heading{min-width:0}.label{display:block;color:#292a34;font-size:.88rem;font-weight:850}.description{display:block;margin-top:3px;color:#777987;font-size:.75rem}.reset{flex:0 0 auto;padding:8px 11px;border:1px solid #dcdce5;border-radius:9px;color:#595b68;background:#fff;font:750 .75rem system-ui;cursor:pointer}.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:360px}.pane{min-width:0;display:flex;flex-direction:column}.pane:first-child{border-right:1px solid #17182412;background:#1b1c25}.bar{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;color:#a9a9b7;background:#22232d;font:700 .7rem ui-monospace,monospace;letter-spacing:.04em}.status{color:#70dcb4}.status.error{color:#ff9a9a}textarea{flex:1;width:100%;min-height:330px;padding:18px;border:0;outline:0;resize:vertical;color:#e9e7f2;background:#1b1c25;font:500 .82rem/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;tab-size:2}.preview-label{padding:10px 14px;border-bottom:1px solid #1718240d;color:#777987;background:#fafafe;font:750 .7rem system-ui;letter-spacing:.04em;text-transform:uppercase}iframe{display:block;width:100%;height:100%;min-height:330px;border:0;background:#f8f8fc}@media(max-width:800px){.workspace{grid-template-columns:1fr}.pane:first-child{border-right:0;border-bottom:1px solid #17182412}textarea{min-height:280px}iframe{min-height:300px}}
+      </style>
+      <div class="head"><span class="heading"><strong class="label"></strong><span class="description"></span></span><button class="reset" type="button">Réinitialiser</button></div>
+      <div class="workspace">
+        <div class="pane"><div class="bar"><span>app.intent</span><span class="status">Compilation…</span></div><textarea spellcheck="false" aria-label="Code Intention modifiable"></textarea></div>
+        <div class="pane"><div class="preview-label">Rendu</div><iframe title="Aperçu du code Intention" sandbox="allow-scripts allow-same-origin"></iframe></div>
+      </div>`;
+    this.editor = this.shadowRoot.querySelector("textarea");
+    this.frame = this.shadowRoot.querySelector("iframe");
+    this.status = this.shadowRoot.querySelector(".status");
+    this.shadowRoot.querySelector(".label").textContent = this.getAttribute("label") || "Exemple interactif";
+    this.shadowRoot.querySelector(".description").textContent = this.getAttribute("description") || "Modifiez le code : le rendu se met à jour automatiquement.";
+    this.editor.value = this.initialCode;
+    this.editor.addEventListener("input", () => {
+      this.status.textContent = "Compilation…";
+      this.status.classList.remove("error");
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => this.run(this.editor.value), 280);
+    });
+    this.editor.addEventListener("keydown", (event) => {
+      if (event.key !== "Tab") return;
+      event.preventDefault();
+      const start = this.editor.selectionStart;
+      this.editor.setRangeText("  ", start, this.editor.selectionEnd, "end");
+      this.editor.dispatchEvent(new Event("input"));
+    });
+    this.shadowRoot.querySelector(".reset").addEventListener("click", () => {
+      this.editor.value = this.initialCode;
+      this.run(this.initialCode);
+      this.editor.focus();
+    });
+  }
+  run(source) {
+    const sourceLiteral = JSON.stringify(String(source)).replaceAll("<", "\\u003c");
+    const playgroundLiteral = JSON.stringify(this.playgroundId);
+    this.frame.srcdoc = `<!doctype html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html{color-scheme:light}*{box-sizing:border-box}body{margin:0;padding:24px;background:#f8f8fc;color:#171821;font-family:Inter,ui-sans-serif,system-ui,sans-serif}intention-root{display:block}#error{margin:0;padding:16px;border:1px solid #ff6b6b55;border-radius:12px;color:#9b2525;background:#fff1f1;font:600 .8rem/1.6 ui-monospace,monospace;white-space:pre-wrap}</style></head><body><intention-root></intention-root><pre id="error" hidden></pre><script type="module">import { parseIntention } from ${JSON.stringify(browserParserUrl)};import { startIntention } from ${JSON.stringify(browserRuntimeUrl)};const source=${sourceLiteral};const id=${playgroundLiteral};try{const program=parseIntention(source,"playground.intent");program.basePath="";startIntention(program);parent.postMessage({playground:id,ok:true},"*")}catch(error){const output=document.querySelector("#error");output.hidden=false;output.textContent=error.message;parent.postMessage({playground:id,ok:false,message:error.message},"*")}<\/script></body></html>`;
+  }
+}
+
 class CtaPanel extends SlotElement {
   constructor() {
     super(`
@@ -478,7 +667,7 @@ function escapeHtml(value) {
 function highlight(source) {
   return escapeHtml(source)
     .replace(/(&quot;.*?&quot;)/g, '<span class="string">$1</span>')
-    .replace(/\b(component|routes|var|persist|input|computed|grid|if|else|each|in|emit)\b/g, '<span class="keyword">$1</span>')
+    .replace(/\b(application|start|library|design|shared|component|routes|var|persist|memory|input|computed|load|action|do|slot|grid|if|else|each|in|where|key|emit|bind|reset|notify|log|ref)\b/g, '<span class="keyword">$1</span>')
     .replace(/\b(on [A-Za-z][\w-]*)\b/g, '<span class="event">$1</span>')
     .replace(/\b(\d+)\b/g, '<span class="number">$1</span>');
 }
@@ -517,6 +706,11 @@ define("intention-faq-list", FaqList);
 define("intention-faq-item", FaqItem);
 define("intention-doc-tabs", DocsTabs);
 define("intention-doc-tab", DocTab);
+define("intention-doc-layout", DocumentationLayout);
+define("intention-doc-section", DocumentationSection);
+define("intention-doc-text", DocumentationText);
+define("intention-doc-note", DocumentationNote);
+define("intention-playground", IntentionPlayground);
 define("intention-cta", CtaPanel);
 define("intention-footer", SiteFooter);
 
@@ -555,6 +749,11 @@ export default {
   faq: "intention-faq-item",
   docsTabs: "intention-doc-tabs",
   docsTab: "intention-doc-tab",
+  docsLayout: "intention-doc-layout",
+  docSection: { tag: "intention-doc-section", properties: { anchor: "id" } },
+  docText: "intention-doc-text",
+  docNote: "intention-doc-note",
+  playground: "intention-playground",
   cta: { tag: "intention-cta", properties: { anchor: "id" } },
   footer: "intention-footer",
   button: { tag: "wa-button", properties: { disabled: "disabled" } },

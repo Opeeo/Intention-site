@@ -26,11 +26,17 @@ const layoutNames = new Set(["column", "row", "width", "height"]);
 const gridNames = new Set(["columns", "minimum", "gap", "padding"]);
 
 const componentStyles = `
-  :host { display: block; }
+  :host { display: block; color: #171821; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+  h1 { margin: 0 0 1rem; font-size: clamp(1.8rem, 6vw, 3rem); line-height: 1.05; letter-spacing: -.045em; }
+  p { margin: .45rem 0 1rem; color: #686b79; line-height: 1.65; }
+  button { min-height: 42px; padding: .65rem 1rem; border: 1px solid #6c4cff55; border-radius: .8rem; color: #fff; background: #6545f5; font: 750 .92rem/1 system-ui, sans-serif; cursor: pointer; }
+  button:hover { background: #5437db; }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  input, select { min-height: 42px; padding: .65rem .8rem; border: 1px solid #d8d8e3; border-radius: .75rem; background: #fff; color: #171821; font: inherit; }
   .intent-row { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
   .intent-column { display: flex; flex-direction: column; gap: .75rem; }
   .intent-grid { display: grid; align-items: stretch; }
-  .intent-card { border: 1px solid color-mix(in srgb, currentColor 20%, transparent); border-radius: 1rem; padding: 1rem; }
+  .intent-card { border: 1px solid #e3e2ea; border-radius: 1rem; padding: 1rem; background: #fff; box-shadow: 0 10px 28px #31285b0c; }
   .intent-hidden { display: none !important; }
 `;
 
@@ -327,7 +333,12 @@ function givenValues(node, scope, basePath = "") {
   const values = Object.fromEntries(
     node.children
       .filter((child) => child.type === "give")
-      .map((child) => [child.name, evaluate(child.value, scope)]),
+      .map((child) => [
+        child.name,
+        child.name === "code" && child.value?.type === "literal"
+          ? clone(child.value.value)
+          : evaluate(child.value, scope),
+      ]),
   );
   if (values.href) values.href = withBasePath(values.href, basePath);
   return values;

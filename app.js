@@ -155,7 +155,7 @@ const program = {
                   "kind": "button",
                   "content": {
                     "type": "literal",
-                    "value": "Démarrer"
+                    "value": "Guide"
                   },
                   "children": [
                     {
@@ -184,7 +184,7 @@ const program = {
                   "kind": "button",
                   "content": {
                     "type": "literal",
-                    "value": "Documentation"
+                    "value": "Référence"
                   },
                   "children": [
                     {
@@ -7450,6 +7450,2505 @@ const program = {
       "line": 316
     },
     {
+      "name": "DocumentationGuide",
+      "body": [
+        {
+          "type": "show",
+          "kind": "docsLayout",
+          "content": null,
+          "children": [
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Premiers pas"
+                  },
+                  "line": 445
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "introduction"
+                  },
+                  "line": 445
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "Introduction"
+                  },
+                  "line": 445
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Guide Intention"
+                  },
+                  "children": [],
+                  "line": 446
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "Construisez votre première interface, étape par étape."
+                  },
+                  "children": [],
+                  "line": 447
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "Ce guide part de zéro, explique chaque décision et vous laisse modifier de vrais exemples Intention directement dans la page."
+                  },
+                  "children": [],
+                  "line": 448
+                },
+                {
+                  "type": "show",
+                  "kind": "docText",
+                  "content": {
+                    "type": "literal",
+                    "value": "Intention transforme des descriptions lisibles en composants Web réactifs. Vous déclarez les données, les composants et les interactions ; le framework génère le rendu, maintient l'état synchronisé et utilise vos Web Components pour le design."
+                  },
+                  "children": [],
+                  "line": 449
+                },
+                {
+                  "type": "show",
+                  "kind": "docNote",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "tone",
+                      "value": {
+                        "type": "literal",
+                        "value": "tip"
+                      },
+                      "line": 450
+                    },
+                    {
+                      "type": "give",
+                      "name": "title",
+                      "value": {
+                        "type": "literal",
+                        "value": "À qui s'adresse ce guide ?"
+                      },
+                      "line": 450
+                    },
+                    {
+                      "type": "give",
+                      "name": "description",
+                      "value": {
+                        "type": "literal",
+                        "value": "Aux personnes qui découvrent le frontend comme aux développeurs expérimentés qui veulent produire une interface sans JSX, hooks ou balisage à fermer."
+                      },
+                      "line": 450
+                    }
+                  ],
+                  "line": 450
+                },
+                {
+                  "type": "show",
+                  "kind": "docsGrid",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "show",
+                      "kind": "docItem",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "keyword",
+                          "value": {
+                            "type": "literal",
+                            "value": "1"
+                          },
+                          "line": 452
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Décrivez"
+                          },
+                          "line": 452
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "Écrivez ce que l'interface contient avec un vocabulaire direct."
+                          },
+                          "line": 452
+                        },
+                        {
+                          "type": "give",
+                          "name": "syntax",
+                          "value": {
+                            "type": "literal",
+                            "value": "heading \"Bonjour\""
+                          },
+                          "line": 452
+                        }
+                      ],
+                      "line": 452
+                    },
+                    {
+                      "type": "show",
+                      "kind": "docItem",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "keyword",
+                          "value": {
+                            "type": "literal",
+                            "value": "2"
+                          },
+                          "line": 453
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Interagissez"
+                          },
+                          "line": 453
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "Placez l'événement sous l'élément qui le déclenche."
+                          },
+                          "line": 453
+                        },
+                        {
+                          "type": "give",
+                          "name": "syntax",
+                          "value": {
+                            "type": "literal",
+                            "value": "on click:"
+                          },
+                          "line": 453
+                        }
+                      ],
+                      "line": 453
+                    },
+                    {
+                      "type": "show",
+                      "kind": "docItem",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "keyword",
+                          "value": {
+                            "type": "literal",
+                            "value": "3"
+                          },
+                          "line": 454
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Composez"
+                          },
+                          "line": 454
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "Rangez les composants avec deux espaces par niveau."
+                          },
+                          "line": 454
+                        },
+                        {
+                          "type": "give",
+                          "name": "syntax",
+                          "value": {
+                            "type": "literal",
+                            "value": "grid(columns: 3):"
+                          },
+                          "line": 454
+                        }
+                      ],
+                      "line": 454
+                    }
+                  ],
+                  "line": 451
+                }
+              ],
+              "line": 445
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Premiers pas"
+                  },
+                  "line": 456
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "installation"
+                  },
+                  "line": 456
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "Installation"
+                  },
+                  "line": 456
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Démarrage rapide"
+                  },
+                  "children": [],
+                  "line": 457
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "Une application locale en trois commandes."
+                  },
+                  "children": [],
+                  "line": 458
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "Intention demande Node.js 20 ou plus récent. La commande init génère une application complète avec ses routes, pages, composants, assets et son design de départ."
+                  },
+                  "children": [],
+                  "line": 459
+                },
+                {
+                  "type": "show",
+                  "kind": "docNote",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "title",
+                      "value": {
+                        "type": "literal",
+                        "value": "Pré-requis"
+                      },
+                      "line": 460
+                    },
+                    {
+                      "type": "give",
+                      "name": "description",
+                      "value": {
+                        "type": "literal",
+                        "value": "Vérifiez Node.js avec node --version. Toute version 20 ou plus récente convient."
+                      },
+                      "line": 460
+                    }
+                  ],
+                  "line": 460
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "Terminal"
+                      },
+                      "line": 461
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "intent init mon-projet\ncd mon-projet\nnpm run dev"
+                      },
+                      "line": 461
+                    }
+                  ],
+                  "line": 461
+                },
+                {
+                  "type": "show",
+                  "kind": "docText",
+                  "content": {
+                    "type": "literal",
+                    "value": "Ouvrez ensuite http://localhost:4173. Le serveur compile les fichiers .intent, sert les pages en SSR et recharge l'application après chaque modification."
+                  },
+                  "children": [],
+                  "line": 462
+                },
+                {
+                  "type": "show",
+                  "kind": "principles",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "show",
+                      "kind": "principle",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "symbol",
+                          "value": {
+                            "type": "literal",
+                            "value": "01"
+                          },
+                          "line": 464
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Initialisez"
+                          },
+                          "line": 464
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "intent init crée une base claire sans assistant complexe."
+                          },
+                          "line": 464
+                        }
+                      ],
+                      "line": 464
+                    },
+                    {
+                      "type": "show",
+                      "kind": "principle",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "symbol",
+                          "value": {
+                            "type": "literal",
+                            "value": "02"
+                          },
+                          "line": 465
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Lancez"
+                          },
+                          "line": 465
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "npm run dev démarre le compilateur et le serveur local."
+                          },
+                          "line": 465
+                        }
+                      ],
+                      "line": 465
+                    },
+                    {
+                      "type": "show",
+                      "kind": "principle",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "symbol",
+                          "value": {
+                            "type": "literal",
+                            "value": "03"
+                          },
+                          "line": 466
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Modifiez"
+                          },
+                          "line": 466
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "Commencez dans pages/Home.intent et enregistrez le fichier."
+                          },
+                          "line": 466
+                        }
+                      ],
+                      "line": 466
+                    }
+                  ],
+                  "line": 463
+                }
+              ],
+              "line": 456
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Premiers pas"
+                  },
+                  "line": 468
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "premier-composant"
+                  },
+                  "line": 468
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "Premier composant"
+                  },
+                  "line": 468
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Tutoriel"
+                  },
+                  "children": [],
+                  "line": 469
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "Un compteur réactif sans balisage."
+                  },
+                  "children": [],
+                  "line": 470
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "Un composant rassemble son état et son interface. var crée une donnée réactive ; on click décrit l'interaction exactement là où elle se produit."
+                  },
+                  "children": [],
+                  "line": 471
+                },
+                {
+                  "type": "show",
+                  "kind": "docText",
+                  "content": {
+                    "type": "literal",
+                    "value": "Dans l'éditeur ci-dessous, remplacez la valeur initiale, modifiez les libellés ou ajoutez un second message. Chaque changement est analysé par le vrai parseur Intention puis exécuté dans un aperçu isolé."
+                  },
+                  "children": [],
+                  "line": 472
+                },
+                {
+                  "type": "show",
+                  "kind": "playground",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "Compteur interactif"
+                      },
+                      "line": 473
+                    },
+                    {
+                      "type": "give",
+                      "name": "description",
+                      "value": {
+                        "type": "literal",
+                        "value": "Essayez count = 10, changez le texte ou ajoutez une condition."
+                      },
+                      "line": 473
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "component App:\n  var count = 0\n  computed doubled = count * 2\n\n  heading \"Mon compteur\"\n  row:\n    button \"−\":\n      disabled if count == 0\n      on click:\n        count = count - 1\n\n    text count\n\n    button \"+\":\n      on click:\n        count = count + 1\n\n  message \"Valeur doublée :\"\n  message doubled"
+                      },
+                      "line": 473
+                    }
+                  ],
+                  "line": 473
+                },
+                {
+                  "type": "show",
+                  "kind": "docNote",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "tone",
+                      "value": {
+                        "type": "literal",
+                        "value": "tip"
+                      },
+                      "line": 474
+                    },
+                    {
+                      "type": "give",
+                      "name": "title",
+                      "value": {
+                        "type": "literal",
+                        "value": "Le point important"
+                      },
+                      "line": 474
+                    },
+                    {
+                      "type": "give",
+                      "name": "description",
+                      "value": {
+                        "type": "literal",
+                        "value": "Il n'existe ni fonction de rendu ni appel manuel pour rafraîchir la page. Une affectation suffit : Intention recalcule seulement ce qui dépend de count."
+                      },
+                      "line": 474
+                    }
+                  ],
+                  "line": 474
+                }
+              ],
+              "line": 468
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Premiers pas"
+                  },
+                  "line": 476
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "structure-projet"
+                  },
+                  "line": 476
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "Structure du projet"
+                  },
+                  "line": 476
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Architecture"
+                  },
+                  "children": [],
+                  "line": 477
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "Des fichiers rangés comme dans un framework classique."
+                  },
+                  "children": [],
+                  "line": 478
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "Le point d'entrée configure l'application. Les pages, composants et assets sont découverts automatiquement, sans liste d'imports à maintenir."
+                  },
+                  "children": [],
+                  "line": 479
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "Arborescence"
+                      },
+                      "line": 480
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "mon-projet/\n├── app.intent\n├── routes.intent\n├── pages/\n│   ├── Home.intent\n│   └── NotFound.intent\n├── components/\n│   └── ProductCard.intent\n├── design/\n│   └── design.js\n├── assets/\n└── package.json"
+                      },
+                      "line": 480
+                    }
+                  ],
+                  "line": 480
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "app.intent"
+                      },
+                      "line": 481
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "application = \"Mon application\"\ndesign = \"./design/design.js\"\nstart = Home"
+                      },
+                      "line": 481
+                    }
+                  ],
+                  "line": 481
+                },
+                {
+                  "type": "show",
+                  "kind": "docText",
+                  "content": {
+                    "type": "literal",
+                    "value": "app.intent porte la configuration globale. routes.intent associe les URL aux composants de page. Chaque autre fichier .intent peut déclarer un ou plusieurs composants réutilisables."
+                  },
+                  "children": [],
+                  "line": 482
+                }
+              ],
+              "line": 476
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Fondamentaux"
+                  },
+                  "line": 484
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "syntaxe"
+                  },
+                  "line": 484
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "Syntaxe essentielle"
+                  },
+                  "line": 484
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Le langage"
+                  },
+                  "children": [],
+                  "line": 485
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "Une intention par ligne, deux espaces pour entrer dans un bloc."
+                  },
+                  "children": [],
+                  "line": 486
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "Les deux-points ouvrent un bloc. Les paramètres sont nommés et séparés par des virgules. Les guillemets indiquent un texte littéral ; sans guillemets, Intention évalue une expression."
+                  },
+                  "children": [],
+                  "line": 487
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "syntaxe.intent"
+                      },
+                      "line": 488
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "component ProductCard:\n  input title = \"Produit\"\n  input price = 0\n\n  card:\n    heading title\n    message price\n    button(variant: \"brand\", disabled: false) \"Ajouter\":\n      on click:\n        emit selected with title"
+                      },
+                      "line": 488
+                    }
+                  ],
+                  "line": 488
+                },
+                {
+                  "type": "show",
+                  "kind": "docsGrid",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "show",
+                      "kind": "docItem",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "keyword",
+                          "value": {
+                            "type": "literal",
+                            "value": "\"texte\""
+                          },
+                          "line": 490
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Valeur littérale"
+                          },
+                          "line": 490
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "Le contenu est affiché exactement comme il est écrit."
+                          },
+                          "line": 490
+                        },
+                        {
+                          "type": "give",
+                          "name": "syntax",
+                          "value": {
+                            "type": "literal",
+                            "value": "heading \"Bienvenue\""
+                          },
+                          "line": 490
+                        }
+                      ],
+                      "line": 490
+                    },
+                    {
+                      "type": "show",
+                      "kind": "docItem",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "keyword",
+                          "value": {
+                            "type": "literal",
+                            "value": "expression"
+                          },
+                          "line": 491
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Valeur dynamique"
+                          },
+                          "line": 491
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "Une variable ou un calcul est évalué au rendu."
+                          },
+                          "line": 491
+                        },
+                        {
+                          "type": "give",
+                          "name": "syntax",
+                          "value": {
+                            "type": "literal",
+                            "value": "message total * quantity"
+                          },
+                          "line": 491
+                        }
+                      ],
+                      "line": 491
+                    },
+                    {
+                      "type": "show",
+                      "kind": "docItem",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "keyword",
+                          "value": {
+                            "type": "literal",
+                            "value": ":"
+                          },
+                          "line": 492
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Bloc enfant"
+                          },
+                          "line": 492
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "La ligne suivante avance de deux espaces."
+                          },
+                          "line": 492
+                        },
+                        {
+                          "type": "give",
+                          "name": "syntax",
+                          "value": {
+                            "type": "literal",
+                            "value": "button \"Ajouter\":"
+                          },
+                          "line": 492
+                        }
+                      ],
+                      "line": 492
+                    }
+                  ],
+                  "line": 489
+                }
+              ],
+              "line": 484
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Fondamentaux"
+                  },
+                  "line": 494
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "etat-reactif"
+                  },
+                  "line": 494
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "État et valeurs calculées"
+                  },
+                  "line": 494
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Réactivité"
+                  },
+                  "children": [],
+                  "line": 495
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "var change, computed suit automatiquement."
+                  },
+                  "children": [],
+                  "line": 496
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "Utilisez var pour une valeur locale modifiable. Utilisez computed pour une valeur dérivée : elle est recalculée depuis l'état courant, sans dépendances à déclarer."
+                  },
+                  "children": [],
+                  "line": 497
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "price.intent"
+                      },
+                      "line": 498
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "component Price:\n  var quantity = 1\n  var unitPrice = 12\n  computed total = quantity * unitPrice\n\n  message \"Total\"\n  heading total\n  button \"Ajouter une unité\":\n    on click:\n      quantity = quantity + 1"
+                      },
+                      "line": 498
+                    }
+                  ],
+                  "line": 498
+                },
+                {
+                  "type": "show",
+                  "kind": "docNote",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "title",
+                      "value": {
+                        "type": "literal",
+                        "value": "Choisir le bon mot-clé"
+                      },
+                      "line": 499
+                    },
+                    {
+                      "type": "give",
+                      "name": "description",
+                      "value": {
+                        "type": "literal",
+                        "value": "var pour une source de vérité, computed pour une valeur que l'on peut toujours retrouver à partir d'autres données, memory pour une information technique qui ne doit pas provoquer de rendu."
+                      },
+                      "line": 499
+                    }
+                  ],
+                  "line": 499
+                }
+              ],
+              "line": 494
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Fondamentaux"
+                  },
+                  "line": 501
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "composants"
+                  },
+                  "line": 501
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "Composants, inputs et slots"
+                  },
+                  "line": 501
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Composition"
+                  },
+                  "children": [],
+                  "line": 502
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "Construisez de petits blocs qui se lisent seuls."
+                  },
+                  "children": [],
+                  "line": 503
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "input définit le contrat public du composant. Le parent transmet les valeurs avec des paramètres nommés. slot choisit où afficher le contenu fourni par le parent."
+                  },
+                  "children": [],
+                  "line": 504
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "components/Panel.intent"
+                      },
+                      "line": 505
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "component Panel:\n  input title = \"Section\"\n\n  card:\n    heading title\n    slot\n\ncomponent Home:\n  Panel(title: \"Profil\"):\n    message \"Contenu fourni par Home\"\n    button \"Modifier\""
+                      },
+                      "line": 505
+                    }
+                  ],
+                  "line": 505
+                },
+                {
+                  "type": "show",
+                  "kind": "docText",
+                  "content": {
+                    "type": "literal",
+                    "value": "Les composants Intention deviennent des Custom Elements préfixés par intent-. Ils peuvent donc être utilisés dans une autre application Web et conserver leur état, leurs événements et leur encapsulation."
+                  },
+                  "children": [],
+                  "line": 506
+                }
+              ],
+              "line": 501
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Fondamentaux"
+                  },
+                  "line": 508
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "evenements"
+                  },
+                  "line": 508
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "Événements et conditions"
+                  },
+                  "line": 508
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Interactions"
+                  },
+                  "children": [],
+                  "line": 509
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "L'événement est placé sous l'élément concerné."
+                  },
+                  "children": [],
+                  "line": 510
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "on click, on change et on submit regroupent les actions déclenchées. if et else rendent les variantes explicites au même niveau que le reste de l'interface."
+                  },
+                  "children": [],
+                  "line": 511
+                },
+                {
+                  "type": "show",
+                  "kind": "playground",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "Condition interactive"
+                      },
+                      "line": 512
+                    },
+                    {
+                      "type": "give",
+                      "name": "description",
+                      "value": {
+                        "type": "literal",
+                        "value": "Changez les messages ou ajoutez un second bouton."
+                      },
+                      "line": 512
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "component App:\n  var connected = false\n\n  heading \"Mon espace\"\n\n  if connected:\n    message \"Vous êtes connecté.\"\n  else:\n    message \"Connectez-vous pour continuer.\"\n\n  button \"Changer d'état\":\n    on click:\n      toggle connected"
+                      },
+                      "line": 512
+                    }
+                  ],
+                  "line": 512
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "form.intent"
+                      },
+                      "line": 513
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "component ContactForm:\n  var email = \"\"\n\n  form:\n    input \"Votre e-mail\":\n      bind email\n    button \"Envoyer\":\n      disabled if email == \"\"\n      on click:\n        notify \"Message envoyé\""
+                      },
+                      "line": 513
+                    }
+                  ],
+                  "line": 513
+                }
+              ],
+              "line": 508
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Fondamentaux"
+                  },
+                  "line": 515
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "listes"
+                  },
+                  "line": 515
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "Listes et identité"
+                  },
+                  "line": 515
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Collections"
+                  },
+                  "children": [],
+                  "line": 516
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "each répète, where filtre, key conserve l'identité."
+                  },
+                  "children": [],
+                  "line": 517
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "Chaque élément de la collection reçoit un nom local. index indique sa position. Une key stable permet à Intention de préserver le bon état lors d'un tri ou d'une suppression."
+                  },
+                  "children": [],
+                  "line": 518
+                },
+                {
+                  "type": "show",
+                  "kind": "playground",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "Liste modifiable"
+                      },
+                      "line": 519
+                    },
+                    {
+                      "type": "give",
+                      "name": "description",
+                      "value": {
+                        "type": "literal",
+                        "value": "Cliquez sur une tâche pour la retirer du tableau."
+                      },
+                      "line": 519
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "component App:\n  var tasks = [\"Écrire\", \"Tester\", \"Publier\"]\n\n  heading \"À faire\"\n\n  each task in tasks:\n    card:\n      heading task\n      button \"Terminer\":\n        on click:\n          tasks -= task\n\n  if tasks.length == 0:\n    message \"Tout est terminé !\""
+                      },
+                      "line": 519
+                    }
+                  ],
+                  "line": 519
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "filtrer.intent"
+                      },
+                      "line": 520
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "each product in products where product.available key product.id:\n  ProductCard(product: product, key: product.id)"
+                      },
+                      "line": 520
+                    }
+                  ],
+                  "line": 520
+                }
+              ],
+              "line": 515
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Mise en page"
+                  },
+                  "line": 522
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "grilles"
+                  },
+                  "line": 522
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "Grilles responsives"
+                  },
+                  "line": 522
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Placement"
+                  },
+                  "children": [],
+                  "line": 523
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "La grille annonce sa capacité, les enfants demandent leur place."
+                  },
+                  "children": [],
+                  "line": 524
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "columns fixe le nombre maximal de colonnes. minimum indique la largeur souhaitée avant le repli mobile. width et height expriment l'occupation de chaque composant."
+                  },
+                  "children": [],
+                  "line": 525
+                },
+                {
+                  "type": "show",
+                  "kind": "playground",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "Grille en direct"
+                      },
+                      "line": 526
+                    },
+                    {
+                      "type": "give",
+                      "name": "description",
+                      "value": {
+                        "type": "literal",
+                        "value": "Essayez columns: 2, gap: 32 ou changez les largeurs."
+                      },
+                      "line": 526
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "component App:\n  heading \"Tableau de bord\"\n\n  grid(columns: 3, minimum: 150, gap: 12):\n    card(width: 2):\n      heading \"Activité\"\n      message \"Vue principale\"\n    card:\n      heading \"Équipe\"\n      message \"12 membres\"\n    card:\n      heading \"Tâches\"\n      message \"8 ouvertes\""
+                      },
+                      "line": 526
+                    }
+                  ],
+                  "line": 526
+                },
+                {
+                  "type": "show",
+                  "kind": "docNote",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "tone",
+                      "value": {
+                        "type": "literal",
+                        "value": "tip"
+                      },
+                      "line": 527
+                    },
+                    {
+                      "type": "give",
+                      "name": "title",
+                      "value": {
+                        "type": "literal",
+                        "value": "Responsive sans media query"
+                      },
+                      "line": 527
+                    },
+                    {
+                      "type": "give",
+                      "name": "description",
+                      "value": {
+                        "type": "literal",
+                        "value": "Lorsque l'espace devient trop étroit, Intention réduit le nombre de colonnes et replace les éléments dans leur ordre naturel."
+                      },
+                      "line": 527
+                    }
+                  ],
+                  "line": 527
+                }
+              ],
+              "line": 522
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Concepts avancés"
+                  },
+                  "line": 529
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "partage-persistence"
+                  },
+                  "line": 529
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "État partagé, actions et persistance"
+                  },
+                  "line": 529
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "État avancé"
+                  },
+                  "children": [],
+                  "line": 530
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "Partagez sans Provider, persistez sans plomberie."
+                  },
+                  "children": [],
+                  "line": 531
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "shared rend une valeur disponible dans tous les composants. action nomme une transition métier, do l'exécute et persist restaure automatiquement une valeur après rechargement."
+                  },
+                  "children": [],
+                  "line": 532
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "cart.intent"
+                      },
+                      "line": 533
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "shared cart = []\n\ncomponent AddButton:\n  input product = {}\n\n  action add(item):\n    cart += item\n    notify \"Ajouté au panier\"\n\n  button \"Ajouter\":\n    on click:\n      do add with product\n\ncomponent Preferences:\n  persist theme = \"light\""
+                      },
+                      "line": 533
+                    }
+                  ],
+                  "line": 533
+                },
+                {
+                  "type": "show",
+                  "kind": "docsGrid",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "show",
+                      "kind": "docItem",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "keyword",
+                          "value": {
+                            "type": "literal",
+                            "value": "shared"
+                          },
+                          "line": 535
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Disponible partout"
+                          },
+                          "line": 535
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "Une source de vérité réactive pour plusieurs composants."
+                          },
+                          "line": 535
+                        },
+                        {
+                          "type": "give",
+                          "name": "syntax",
+                          "value": {
+                            "type": "literal",
+                            "value": "shared cart = []"
+                          },
+                          "line": 535
+                        }
+                      ],
+                      "line": 535
+                    },
+                    {
+                      "type": "show",
+                      "kind": "docItem",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "keyword",
+                          "value": {
+                            "type": "literal",
+                            "value": "action / do"
+                          },
+                          "line": 536
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Transition nommée"
+                          },
+                          "line": 536
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "Regroupe plusieurs changements sous un nom métier."
+                          },
+                          "line": 536
+                        },
+                        {
+                          "type": "give",
+                          "name": "syntax",
+                          "value": {
+                            "type": "literal",
+                            "value": "do add with product"
+                          },
+                          "line": 536
+                        }
+                      ],
+                      "line": 536
+                    },
+                    {
+                      "type": "show",
+                      "kind": "docItem",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "keyword",
+                          "value": {
+                            "type": "literal",
+                            "value": "persist"
+                          },
+                          "line": 537
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Conservé localement"
+                          },
+                          "line": 537
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "La valeur survit à la fermeture et au rechargement."
+                          },
+                          "line": 537
+                        },
+                        {
+                          "type": "give",
+                          "name": "syntax",
+                          "value": {
+                            "type": "literal",
+                            "value": "persist theme = \"light\""
+                          },
+                          "line": 537
+                        }
+                      ],
+                      "line": 537
+                    }
+                  ],
+                  "line": 534
+                }
+              ],
+              "line": 529
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Concepts avancés"
+                  },
+                  "line": 539
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "donnees-effets"
+                  },
+                  "line": 539
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "Données, effets et références"
+                  },
+                  "line": 539
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Synchronisation"
+                  },
+                  "children": [],
+                  "line": 540
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "Chargez une API et dialoguez avec le navigateur."
+                  },
+                  "children": [],
+                  "line": 541
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "load expose automatiquement le résultat, le chargement et l'erreur. Les effets nomment clairement les moments du cycle de vie. ref permet de focaliser, faire défiler ou piloter un élément."
+                  },
+                  "children": [],
+                  "line": 542
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "catalog.intent"
+                      },
+                      "line": 543
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "component Catalog:\n  load products from \"/api/products\"\n\n  if productsLoading:\n    message \"Chargement…\"\n  else:\n    if productsError != \"\":\n      message productsError\n    else:\n      each product in products key product.id:\n        ProductCard(product: product, key: product.id)"
+                      },
+                      "line": 543
+                    }
+                  ],
+                  "line": 543
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "effects.intent"
+                      },
+                      "line": 544
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "component Search:\n  var query = \"\"\n\n  on mount:\n    log \"Recherche prête\"\n\n  on change of query:\n    log query\n\n  input(ref: \"searchField\") \"Rechercher\":\n    bind query\n\n  button \"Écrire\":\n    on click:\n      focus searchField"
+                      },
+                      "line": 544
+                    }
+                  ],
+                  "line": 544
+                }
+              ],
+              "line": 539
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Application"
+                  },
+                  "line": 546
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "routing"
+                  },
+                  "line": 546
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "Routing SSR"
+                  },
+                  "line": 546
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Pages"
+                  },
+                  "children": [],
+                  "line": 547
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "Une configuration de routes, du HTML déjà rendu."
+                  },
+                  "children": [],
+                  "line": 548
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "Chaque route pointe vers un composant portant le même nom. Les routes statiques sont pré-rendues ; les paramètres dynamiques deviennent directement des inputs de page."
+                  },
+                  "children": [],
+                  "line": 549
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "routes.intent"
+                      },
+                      "line": 550
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "routes:\n  Home: \"/\"\n  Documentation: \"/docs\"\n  Product: \"/products/:id\"\n  NotFound: \"*\"\n\ncomponent Product:\n  input id = \"\"\n  heading id\n  button(href: \"/docs\") \"Retour au guide\""
+                      },
+                      "line": 550
+                    }
+                  ],
+                  "line": 550
+                },
+                {
+                  "type": "show",
+                  "kind": "docText",
+                  "content": {
+                    "type": "literal",
+                    "value": "Un bouton avec href utilise automatiquement la navigation cliente après le premier chargement. L'historique, les boutons précédent/suivant et les ancres restent natifs."
+                  },
+                  "children": [],
+                  "line": 551
+                },
+                {
+                  "type": "show",
+                  "kind": "actions",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "show",
+                      "kind": "button",
+                      "content": {
+                        "type": "literal",
+                        "value": "Tester une route dynamique"
+                      },
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "variant",
+                          "value": {
+                            "type": "literal",
+                            "value": "brand"
+                          },
+                          "line": 553
+                        },
+                        {
+                          "type": "give",
+                          "name": "appearance",
+                          "value": {
+                            "type": "literal",
+                            "value": "filled"
+                          },
+                          "line": 553
+                        },
+                        {
+                          "type": "give",
+                          "name": "href",
+                          "value": {
+                            "type": "literal",
+                            "value": "/examples/routing-demo"
+                          },
+                          "line": 553
+                        },
+                        {
+                          "type": "give",
+                          "name": "pill",
+                          "value": {
+                            "type": "literal",
+                            "value": true
+                          },
+                          "line": 553
+                        }
+                      ],
+                      "line": 553
+                    }
+                  ],
+                  "line": 552
+                }
+              ],
+              "line": 546
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Application"
+                  },
+                  "line": 555
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "web-components"
+                  },
+                  "line": 555
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "Web Components et design systems"
+                  },
+                  "line": 555
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Design"
+                  },
+                  "children": [],
+                  "line": 556
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "Le langage décrit l'interface, vos composants définissent son apparence."
+                  },
+                  "children": [],
+                  "line": 557
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "Une petite table de correspondance relie button, card ou input aux Custom Elements de votre bibliothèque. Sans correspondance disponible, Intention revient à l'élément HTML natif."
+                  },
+                  "children": [],
+                  "line": 558
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "design.js"
+                      },
+                      "line": 559
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "export default {\n  button: {\n    tag: \"acme-button\",\n    properties: { disabled: \"inactive\" },\n    events: { clicked: \"activate\" }\n  },\n  card: { tag: \"acme-card\" }\n};"
+                      },
+                      "line": 559
+                    }
+                  ],
+                  "line": 559
+                },
+                {
+                  "type": "show",
+                  "kind": "docNote",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "tone",
+                      "value": {
+                        "type": "literal",
+                        "value": "tip"
+                      },
+                      "line": 560
+                    },
+                    {
+                      "type": "give",
+                      "name": "title",
+                      "value": {
+                        "type": "literal",
+                        "value": "Progressive enhancement"
+                      },
+                      "line": 560
+                    },
+                    {
+                      "type": "give",
+                      "name": "description",
+                      "value": {
+                        "type": "literal",
+                        "value": "Le contenu SSR reste lisible avant le chargement JavaScript. Une fois le design system prêt, les éléments sont activés et les interactions prennent le relais."
+                      },
+                      "line": 560
+                    }
+                  ],
+                  "line": 560
+                }
+              ],
+              "line": 555
+            },
+            {
+              "type": "show",
+              "kind": "docSection",
+              "content": null,
+              "children": [
+                {
+                  "type": "give",
+                  "name": "group",
+                  "value": {
+                    "type": "literal",
+                    "value": "Outils"
+                  },
+                  "line": 562
+                },
+                {
+                  "type": "give",
+                  "name": "anchor",
+                  "value": {
+                    "type": "literal",
+                    "value": "vscode-production"
+                  },
+                  "line": 562
+                },
+                {
+                  "type": "give",
+                  "name": "title",
+                  "value": {
+                    "type": "literal",
+                    "value": "VS Code et production"
+                  },
+                  "line": 562
+                },
+                {
+                  "type": "show",
+                  "kind": "eyebrow",
+                  "content": {
+                    "type": "literal",
+                    "value": "Workflow"
+                  },
+                  "children": [],
+                  "line": 563
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionTitle",
+                  "content": {
+                    "type": "literal",
+                    "value": "Autocomplétion pendant l'écriture, fichiers statiques à la fin."
+                  },
+                  "children": [],
+                  "line": 564
+                },
+                {
+                  "type": "show",
+                  "kind": "sectionLead",
+                  "content": {
+                    "type": "literal",
+                    "value": "L'extension VS Code connaît les mots-clés, les composants du projet, leurs inputs et leurs événements. La compilation de production génère le HTML SSR, le runtime et les assets dans dist/."
+                  },
+                  "children": [],
+                  "line": 565
+                },
+                {
+                  "type": "show",
+                  "kind": "codeWindow",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "label",
+                      "value": {
+                        "type": "literal",
+                        "value": "Terminal"
+                      },
+                      "line": 566
+                    },
+                    {
+                      "type": "give",
+                      "name": "code",
+                      "value": {
+                        "type": "literal",
+                        "value": "npm run install:vscode\n# Installe le thème et l'autocomplétion Intention\n\nnpm test\nnpm run build\n# Le résultat prêt à publier se trouve dans dist/"
+                      },
+                      "line": 566
+                    }
+                  ],
+                  "line": 566
+                },
+                {
+                  "type": "show",
+                  "kind": "docsGrid",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "show",
+                      "kind": "docItem",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "keyword",
+                          "value": {
+                            "type": "literal",
+                            "value": "intent dev"
+                          },
+                          "line": 568
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Développement"
+                          },
+                          "line": 568
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "Serveur SSR local et recompilation automatique."
+                          },
+                          "line": 568
+                        },
+                        {
+                          "type": "give",
+                          "name": "syntax",
+                          "value": {
+                            "type": "literal",
+                            "value": "npm run dev"
+                          },
+                          "line": 568
+                        }
+                      ],
+                      "line": 568
+                    },
+                    {
+                      "type": "show",
+                      "kind": "docItem",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "keyword",
+                          "value": {
+                            "type": "literal",
+                            "value": "intent build"
+                          },
+                          "line": 569
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Production"
+                          },
+                          "line": 569
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "Pages pré-rendues, runtime et assets optimisés pour l'hébergement."
+                          },
+                          "line": 569
+                        },
+                        {
+                          "type": "give",
+                          "name": "syntax",
+                          "value": {
+                            "type": "literal",
+                            "value": "npm run build"
+                          },
+                          "line": 569
+                        }
+                      ],
+                      "line": 569
+                    },
+                    {
+                      "type": "show",
+                      "kind": "docItem",
+                      "content": null,
+                      "children": [
+                        {
+                          "type": "give",
+                          "name": "keyword",
+                          "value": {
+                            "type": "literal",
+                            "value": "--base"
+                          },
+                          "line": 570
+                        },
+                        {
+                          "type": "give",
+                          "name": "title",
+                          "value": {
+                            "type": "literal",
+                            "value": "Sous-dossier"
+                          },
+                          "line": 570
+                        },
+                        {
+                          "type": "give",
+                          "name": "description",
+                          "value": {
+                            "type": "literal",
+                            "value": "Préfixe les scripts, liens et routes pour GitHub Pages."
+                          },
+                          "line": 570
+                        },
+                        {
+                          "type": "give",
+                          "name": "syntax",
+                          "value": {
+                            "type": "literal",
+                            "value": "npm run build -- --base /mon-site"
+                          },
+                          "line": 570
+                        }
+                      ],
+                      "line": 570
+                    }
+                  ],
+                  "line": 567
+                },
+                {
+                  "type": "show",
+                  "kind": "docNote",
+                  "content": null,
+                  "children": [
+                    {
+                      "type": "give",
+                      "name": "title",
+                      "value": {
+                        "type": "literal",
+                        "value": "Prochaine étape"
+                      },
+                      "line": 571
+                    },
+                    {
+                      "type": "give",
+                      "name": "description",
+                      "value": {
+                        "type": "literal",
+                        "value": "Utilisez la navigation de gauche pour revenir sur une notion, puis ouvrez la Référence pour retrouver rapidement la syntaxe exacte de chaque mot-clé."
+                      },
+                      "line": 571
+                    }
+                  ],
+                  "line": 571
+                }
+              ],
+              "line": 562
+            }
+          ],
+          "line": 444
+        }
+      ],
+      "line": 443
+    },
+    {
       "name": "Home",
       "body": [
         {
@@ -7462,14 +9961,14 @@ const program = {
               "kind": "Navigation",
               "content": null,
               "children": [],
-              "line": 445
+              "line": 575
             },
             {
               "type": "show",
               "kind": "Hero",
               "content": null,
               "children": [],
-              "line": 446
+              "line": 576
             },
             {
               "type": "show",
@@ -7488,7 +9987,7 @@ const program = {
                         "type": "literal",
                         "value": "0"
                       },
-                      "line": 448
+                      "line": 578
                     },
                     {
                       "type": "give",
@@ -7497,10 +9996,10 @@ const program = {
                         "type": "literal",
                         "value": "balise HTML à écrire"
                       },
-                      "line": 448
+                      "line": 578
                     }
                   ],
-                  "line": 448
+                  "line": 578
                 },
                 {
                   "type": "show",
@@ -7514,7 +10013,7 @@ const program = {
                         "type": "literal",
                         "value": "2"
                       },
-                      "line": 449
+                      "line": 579
                     },
                     {
                       "type": "give",
@@ -7523,10 +10022,10 @@ const program = {
                         "type": "literal",
                         "value": "espaces par niveau"
                       },
-                      "line": 449
+                      "line": 579
                     }
                   ],
-                  "line": 449
+                  "line": 579
                 },
                 {
                   "type": "show",
@@ -7540,7 +10039,7 @@ const program = {
                         "type": "literal",
                         "value": "100%"
                       },
-                      "line": 450
+                      "line": 580
                     },
                     {
                       "type": "give",
@@ -7549,10 +10048,10 @@ const program = {
                         "type": "literal",
                         "value": "Web Components"
                       },
-                      "line": 450
+                      "line": 580
                     }
                   ],
-                  "line": 450
+                  "line": 580
                 },
                 {
                   "type": "show",
@@ -7566,7 +10065,7 @@ const program = {
                         "type": "literal",
                         "value": "∞"
                       },
-                      "line": 451
+                      "line": 581
                     },
                     {
                       "type": "give",
@@ -7575,61 +10074,61 @@ const program = {
                         "type": "literal",
                         "value": "possibilités"
                       },
-                      "line": 451
+                      "line": 581
                     }
                   ],
-                  "line": 451
+                  "line": 581
                 }
               ],
-              "line": 447
+              "line": 577
             },
             {
               "type": "show",
               "kind": "Features",
               "content": null,
               "children": [],
-              "line": 452
+              "line": 582
             },
             {
               "type": "show",
               "kind": "Language",
               "content": null,
               "children": [],
-              "line": 453
+              "line": 583
             },
             {
               "type": "show",
               "kind": "ReactivityShowcase",
               "content": null,
               "children": [],
-              "line": 454
+              "line": 584
             },
             {
               "type": "show",
               "kind": "Process",
               "content": null,
               "children": [],
-              "line": 455
+              "line": 585
             },
             {
               "type": "show",
               "kind": "Start",
               "content": null,
               "children": [],
-              "line": 456
+              "line": 586
             },
             {
               "type": "show",
               "kind": "Footer",
               "content": null,
               "children": [],
-              "line": 457
+              "line": 587
             }
           ],
-          "line": 444
+          "line": 574
         }
       ],
-      "line": 443
+      "line": 573
     },
     {
       "name": "Documentation",
@@ -7644,69 +10143,27 @@ const program = {
               "kind": "Navigation",
               "content": null,
               "children": [],
-              "line": 461
+              "line": 591
             },
             {
               "type": "show",
-              "kind": "GettingStarted",
+              "kind": "DocumentationGuide",
               "content": null,
               "children": [],
-              "line": 462
-            },
-            {
-              "type": "show",
-              "kind": "DocumentationManual",
-              "content": null,
-              "children": [],
-              "line": 463
-            },
-            {
-              "type": "show",
-              "kind": "RoutingGuide",
-              "content": null,
-              "children": [],
-              "line": 464
-            },
-            {
-              "type": "show",
-              "kind": "Communication",
-              "content": null,
-              "children": [],
-              "line": 465
-            },
-            {
-              "type": "show",
-              "kind": "Components",
-              "content": null,
-              "children": [],
-              "line": 466
-            },
-            {
-              "type": "show",
-              "kind": "FAQ",
-              "content": null,
-              "children": [],
-              "line": 467
-            },
-            {
-              "type": "show",
-              "kind": "Start",
-              "content": null,
-              "children": [],
-              "line": 468
+              "line": 592
             },
             {
               "type": "show",
               "kind": "Footer",
               "content": null,
               "children": [],
-              "line": 469
+              "line": 593
             }
           ],
-          "line": 460
+          "line": 590
         }
       ],
-      "line": 459
+      "line": 589
     },
     {
       "name": "Reference",
@@ -7721,34 +10178,34 @@ const program = {
               "kind": "Navigation",
               "content": null,
               "children": [],
-              "line": 473
+              "line": 597
             },
             {
               "type": "show",
               "kind": "LanguageReference",
               "content": null,
               "children": [],
-              "line": 474
+              "line": 598
             },
             {
               "type": "show",
               "kind": "RoutingGuide",
               "content": null,
               "children": [],
-              "line": 475
+              "line": 599
             },
             {
               "type": "show",
               "kind": "Footer",
               "content": null,
               "children": [],
-              "line": 476
+              "line": 600
             }
           ],
-          "line": 472
+          "line": 596
         }
       ],
-      "line": 471
+      "line": 595
     },
     {
       "name": "Product",
@@ -7760,7 +10217,7 @@ const program = {
             "type": "literal",
             "value": "example"
           },
-          "line": 479
+          "line": 603
         },
         {
           "type": "show",
@@ -7772,7 +10229,7 @@ const program = {
               "kind": "Navigation",
               "content": null,
               "children": [],
-              "line": 482
+              "line": 606
             },
             {
               "type": "show",
@@ -7786,7 +10243,7 @@ const program = {
                     "type": "literal",
                     "value": "soft"
                   },
-                  "line": 483
+                  "line": 607
                 },
                 {
                   "type": "show",
@@ -7796,7 +10253,7 @@ const program = {
                     "value": "Route dynamique"
                   },
                   "children": [],
-                  "line": 484
+                  "line": 608
                 },
                 {
                   "type": "show",
@@ -7806,7 +10263,7 @@ const program = {
                     "value": "La page reçoit : {id}"
                   },
                   "children": [],
-                  "line": 485
+                  "line": 609
                 },
                 {
                   "type": "show",
@@ -7816,7 +10273,7 @@ const program = {
                     "value": "Le segment :id de l'URL a été injecté côté serveur puis transmis comme input au composant Product. Aucun routeur externe ni lecture manuelle de l'URL."
                   },
                   "children": [],
-                  "line": 486
+                  "line": 610
                 },
                 {
                   "type": "show",
@@ -7830,7 +10287,7 @@ const program = {
                         "type": "literal",
                         "value": "product.intent"
                       },
-                      "line": 487
+                      "line": 611
                     },
                     {
                       "type": "give",
@@ -7839,10 +10296,10 @@ const program = {
                         "type": "literal",
                         "value": "routes:\n  Product: \"/examples/:id\"\n\ncomponent Product:\n  input id = \"\"\n  heading \"Exemple {id}\""
                       },
-                      "line": 487
+                      "line": 611
                     }
                   ],
-                  "line": 487
+                  "line": 611
                 },
                 {
                   "type": "show",
@@ -7864,7 +10321,7 @@ const program = {
                             "type": "literal",
                             "value": "brand"
                           },
-                          "line": 489
+                          "line": 613
                         },
                         {
                           "type": "give",
@@ -7873,7 +10330,7 @@ const program = {
                             "type": "literal",
                             "value": "filled"
                           },
-                          "line": 489
+                          "line": 613
                         },
                         {
                           "type": "give",
@@ -7882,7 +10339,7 @@ const program = {
                             "type": "literal",
                             "value": "/docs#manual"
                           },
-                          "line": 489
+                          "line": 613
                         },
                         {
                           "type": "give",
@@ -7891,29 +10348,29 @@ const program = {
                             "type": "literal",
                             "value": true
                           },
-                          "line": 489
+                          "line": 613
                         }
                       ],
-                      "line": 489
+                      "line": 613
                     }
                   ],
-                  "line": 488
+                  "line": 612
                 }
               ],
-              "line": 483
+              "line": 607
             },
             {
               "type": "show",
               "kind": "Footer",
               "content": null,
               "children": [],
-              "line": 490
+              "line": 614
             }
           ],
-          "line": 481
+          "line": 605
         }
       ],
-      "line": 478
+      "line": 602
     },
     {
       "name": "NotFound",
@@ -7928,7 +10385,7 @@ const program = {
               "kind": "Navigation",
               "content": null,
               "children": [],
-              "line": 494
+              "line": 618
             },
             {
               "type": "show",
@@ -7942,7 +10399,7 @@ const program = {
                     "type": "literal",
                     "value": "soft"
                   },
-                  "line": 495
+                  "line": 619
                 },
                 {
                   "type": "show",
@@ -7952,7 +10409,7 @@ const program = {
                     "value": "Erreur 404"
                   },
                   "children": [],
-                  "line": 496
+                  "line": 620
                 },
                 {
                   "type": "show",
@@ -7962,7 +10419,7 @@ const program = {
                     "value": "Cette page n'existe pas."
                   },
                   "children": [],
-                  "line": 497
+                  "line": 621
                 },
                 {
                   "type": "show",
@@ -7972,7 +10429,7 @@ const program = {
                     "value": "La route NotFound: \"*\" a rendu cette réponse côté serveur avec un vrai statut HTTP 404."
                   },
                   "children": [],
-                  "line": 498
+                  "line": 622
                 },
                 {
                   "type": "show",
@@ -7994,7 +10451,7 @@ const program = {
                             "type": "literal",
                             "value": "brand"
                           },
-                          "line": 500
+                          "line": 624
                         },
                         {
                           "type": "give",
@@ -8003,7 +10460,7 @@ const program = {
                             "type": "literal",
                             "value": "filled"
                           },
-                          "line": 500
+                          "line": 624
                         },
                         {
                           "type": "give",
@@ -8012,7 +10469,7 @@ const program = {
                             "type": "literal",
                             "value": "/"
                           },
-                          "line": 500
+                          "line": 624
                         },
                         {
                           "type": "give",
@@ -8021,10 +10478,10 @@ const program = {
                             "type": "literal",
                             "value": true
                           },
-                          "line": 500
+                          "line": 624
                         }
                       ],
-                      "line": 500
+                      "line": 624
                     },
                     {
                       "type": "show",
@@ -8041,7 +10498,7 @@ const program = {
                             "type": "literal",
                             "value": "outlined"
                           },
-                          "line": 501
+                          "line": 625
                         },
                         {
                           "type": "give",
@@ -8050,7 +10507,7 @@ const program = {
                             "type": "literal",
                             "value": "/docs"
                           },
-                          "line": 501
+                          "line": 625
                         },
                         {
                           "type": "give",
@@ -8059,29 +10516,29 @@ const program = {
                             "type": "literal",
                             "value": true
                           },
-                          "line": 501
+                          "line": 625
                         }
                       ],
-                      "line": 501
+                      "line": 625
                     }
                   ],
-                  "line": 499
+                  "line": 623
                 }
               ],
-              "line": 495
+              "line": 619
             },
             {
               "type": "show",
               "kind": "Footer",
               "content": null,
               "children": [],
-              "line": 502
+              "line": 626
             }
           ],
-          "line": 493
+          "line": 617
         }
       ],
-      "line": 492
+      "line": 616
     }
   ],
   "basePath": "/Intention-site"
