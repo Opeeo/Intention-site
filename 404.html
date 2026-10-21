@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Application créée avec Intention">
+    <title>NotFound — Intention — Le frontend qui se lit</title>
+    <style>
+      html { color-scheme: light dark; font-family: system-ui, sans-serif; }
+      body { margin: 0; min-height: 100vh; }
+      
+  intention-root[data-intention-ssr] { display: block; min-height: 100vh; background: #f8f8fc; color: #161720; }
+  intention-root[data-intention-ssr] .intent-ssr-component { display: contents; }
+  intention-root[data-intention-ssr] .intent-ssr { box-sizing: border-box; }
+  intention-root[data-intention-ssr] .intent-ssr-site { display: block; }
+  intention-root[data-intention-ssr] .intent-ssr-navbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem max(1rem, calc((100% - 1180px) / 2)); background: #fff; }
+  intention-root[data-intention-ssr] .intent-ssr-hero,
+  intention-root[data-intention-ssr] .intent-ssr-sectionblock,
+  intention-root[data-intention-ssr] .intent-ssr-cta { display: block; padding: clamp(4rem, 9vw, 8rem) max(1rem, calc((100% - 1180px) / 2)); }
+  intention-root[data-intention-ssr] .intent-ssr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  intention-root[data-intention-ssr] .intent-ssr-display,
+  intention-root[data-intention-ssr] .intent-ssr-sectiontitle { max-width: 900px; margin: 0 0 1rem; font: 900 clamp(2.2rem, 6vw, 5rem)/1 system-ui, sans-serif; letter-spacing: -.055em; }
+  intention-root[data-intention-ssr] p { max-width: 760px; line-height: 1.65; }
+  intention-root[data-intention-ssr] .intent-ssr-value { display: block; margin: .25rem 0; }
+  intention-root[data-intention-ssr] .intent-ssr-value-title,
+  intention-root[data-intention-ssr] .intent-ssr-value-question { font-weight: 800; }
+  intention-root[data-intention-ssr] .intent-ssr-value-description,
+  intention-root[data-intention-ssr] .intent-ssr-value-answer { color: #696b7a; }
+  intention-root[data-intention-ssr] a.intent-ssr-button,
+  intention-root[data-intention-ssr] button.intent-ssr-button { display: inline-flex; padding: .8rem 1.1rem; margin: .25rem; border: 1px solid #6c4cff55; border-radius: 999px; color: #5133d7; background: #fff; font: 700 1rem system-ui, sans-serif; text-decoration: none; }
+
+    </style>
+  </head>
+  <body>
+    <intention-root data-intention-ssr data-route="*"><main class="intent-ssr intent-ssr-site" data-intention-kind="site"><div class="intent-ssr-component" data-intention-component="Navigation"><nav class="intent-ssr intent-ssr-navbar" data-intention-kind="navbar"><div class="intent-ssr-component" data-intention-component="Logo"><div class="intent-ssr intent-ssr-brand" data-intention-kind="brand">Intention</div><div class="intent-ssr intent-ssr-badge" data-intention-kind="badge">v0.6</div></div><div class="intent-ssr intent-ssr-navlinks" data-intention-kind="navLinks"><a class="intent-ssr intent-ssr-button" data-intention-kind="button" href="/Intention-site/#features">Pourquoi</a><a class="intent-ssr intent-ssr-button" data-intention-kind="button" href="/Intention-site/docs">Démarrer</a><a class="intent-ssr intent-ssr-button" data-intention-kind="button" href="/Intention-site/reference">Documentation</a><a class="intent-ssr intent-ssr-button" data-intention-kind="button" href="/Intention-site/#start">Essayer</a></div></nav></div><section class="intent-ssr intent-ssr-sectionblock" data-intention-kind="sectionBlock"><p class="intent-ssr intent-ssr-eyebrow" data-intention-kind="eyebrow">Erreur 404</p><h2 class="intent-ssr intent-ssr-sectiontitle" data-intention-kind="sectionTitle">Cette page n&#39;existe pas.</h2><p class="intent-ssr intent-ssr-sectionlead" data-intention-kind="sectionLead">La route NotFound: &quot;*&quot; a rendu cette réponse côté serveur avec un vrai statut HTTP 404.</p><div class="intent-ssr intent-ssr-actions" data-intention-kind="actions"><a class="intent-ssr intent-ssr-button" data-intention-kind="button" href="/Intention-site/">Revenir à l&#39;accueil</a><a class="intent-ssr intent-ssr-button" data-intention-kind="button" href="/Intention-site/docs">Lire la documentation</a></div></section><div class="intent-ssr-component" data-intention-component="Footer"><footer class="intent-ssr intent-ssr-footer" data-intention-kind="footer"><div class="intent-ssr-component" data-intention-component="Logo"><div class="intent-ssr intent-ssr-brand" data-intention-kind="brand">Intention</div><div class="intent-ssr intent-ssr-badge" data-intention-kind="badge">v0.6</div></div><p class="intent-ssr intent-ssr-message" data-intention-kind="message">Pensé pour rendre le développement frontend accessible, sans renoncer à la puissance.</p><span class="intent-ssr intent-ssr-text" data-intention-kind="text">© 2026 Intention</span></footer></div></main></intention-root>
+    <script type="module" src="/Intention-site/app.js"></script>
+  </body>
+</html>
