@@ -10135,7 +10135,7 @@ const program = {
       "body": [
         {
           "type": "show",
-          "kind": "site",
+          "kind": "docsPage",
           "content": null,
           "children": [
             {
@@ -10151,13 +10151,6 @@ const program = {
               "content": null,
               "children": [],
               "line": 592
-            },
-            {
-              "type": "show",
-              "kind": "Footer",
-              "content": null,
-              "children": [],
-              "line": 593
             }
           ],
           "line": 590
@@ -10178,34 +10171,34 @@ const program = {
               "kind": "Navigation",
               "content": null,
               "children": [],
-              "line": 597
+              "line": 596
             },
             {
               "type": "show",
               "kind": "LanguageReference",
               "content": null,
               "children": [],
-              "line": 598
+              "line": 597
             },
             {
               "type": "show",
               "kind": "RoutingGuide",
               "content": null,
               "children": [],
-              "line": 599
+              "line": 598
             },
             {
               "type": "show",
               "kind": "Footer",
               "content": null,
               "children": [],
-              "line": 600
+              "line": 599
             }
           ],
-          "line": 596
+          "line": 595
         }
       ],
-      "line": 595
+      "line": 594
     },
     {
       "name": "Product",
@@ -10217,7 +10210,7 @@ const program = {
             "type": "literal",
             "value": "example"
           },
-          "line": 603
+          "line": 602
         },
         {
           "type": "show",
@@ -10229,7 +10222,7 @@ const program = {
               "kind": "Navigation",
               "content": null,
               "children": [],
-              "line": 606
+              "line": 605
             },
             {
               "type": "show",
@@ -10243,7 +10236,7 @@ const program = {
                     "type": "literal",
                     "value": "soft"
                   },
-                  "line": 607
+                  "line": 606
                 },
                 {
                   "type": "show",
@@ -10253,7 +10246,7 @@ const program = {
                     "value": "Route dynamique"
                   },
                   "children": [],
-                  "line": 608
+                  "line": 607
                 },
                 {
                   "type": "show",
@@ -10263,7 +10256,7 @@ const program = {
                     "value": "La page reçoit : {id}"
                   },
                   "children": [],
-                  "line": 609
+                  "line": 608
                 },
                 {
                   "type": "show",
@@ -10273,7 +10266,7 @@ const program = {
                     "value": "Le segment :id de l'URL a été injecté côté serveur puis transmis comme input au composant Product. Aucun routeur externe ni lecture manuelle de l'URL."
                   },
                   "children": [],
-                  "line": 610
+                  "line": 609
                 },
                 {
                   "type": "show",
@@ -10287,7 +10280,7 @@ const program = {
                         "type": "literal",
                         "value": "product.intent"
                       },
-                      "line": 611
+                      "line": 610
                     },
                     {
                       "type": "give",
@@ -10296,10 +10289,10 @@ const program = {
                         "type": "literal",
                         "value": "routes:\n  Product: \"/examples/:id\"\n\ncomponent Product:\n  input id = \"\"\n  heading \"Exemple {id}\""
                       },
-                      "line": 611
+                      "line": 610
                     }
                   ],
-                  "line": 611
+                  "line": 610
                 },
                 {
                   "type": "show",
@@ -10321,7 +10314,7 @@ const program = {
                             "type": "literal",
                             "value": "brand"
                           },
-                          "line": 613
+                          "line": 612
                         },
                         {
                           "type": "give",
@@ -10330,7 +10323,7 @@ const program = {
                             "type": "literal",
                             "value": "filled"
                           },
-                          "line": 613
+                          "line": 612
                         },
                         {
                           "type": "give",
@@ -10339,7 +10332,7 @@ const program = {
                             "type": "literal",
                             "value": "/docs#manual"
                           },
-                          "line": 613
+                          "line": 612
                         },
                         {
                           "type": "give",
@@ -10348,29 +10341,29 @@ const program = {
                             "type": "literal",
                             "value": true
                           },
-                          "line": 613
+                          "line": 612
                         }
                       ],
-                      "line": 613
+                      "line": 612
                     }
                   ],
-                  "line": 612
+                  "line": 611
                 }
               ],
-              "line": 607
+              "line": 606
             },
             {
               "type": "show",
               "kind": "Footer",
               "content": null,
               "children": [],
-              "line": 614
+              "line": 613
             }
           ],
-          "line": 605
+          "line": 604
         }
       ],
-      "line": 602
+      "line": 601
     },
     {
       "name": "NotFound",
@@ -10385,7 +10378,7 @@ const program = {
               "kind": "Navigation",
               "content": null,
               "children": [],
-              "line": 618
+              "line": 617
             },
             {
               "type": "show",
@@ -10399,7 +10392,7 @@ const program = {
                     "type": "literal",
                     "value": "soft"
                   },
-                  "line": 619
+                  "line": 618
                 },
                 {
                   "type": "show",
@@ -10409,7 +10402,7 @@ const program = {
                     "value": "Erreur 404"
                   },
                   "children": [],
-                  "line": 620
+                  "line": 619
                 },
                 {
                   "type": "show",
@@ -10419,7 +10412,7 @@ const program = {
                     "value": "Cette page n'existe pas."
                   },
                   "children": [],
-                  "line": 621
+                  "line": 620
                 },
                 {
                   "type": "show",
@@ -10429,7 +10422,7 @@ const program = {
                     "value": "La route NotFound: \"*\" a rendu cette réponse côté serveur avec un vrai statut HTTP 404."
                   },
                   "children": [],
-                  "line": 622
+                  "line": 621
                 },
                 {
                   "type": "show",
@@ -10451,7 +10444,7 @@ const program = {
                             "type": "literal",
                             "value": "brand"
                           },
-                          "line": 624
+                          "line": 623
                         },
                         {
                           "type": "give",
@@ -10460,7 +10453,7 @@ const program = {
                             "type": "literal",
                             "value": "filled"
                           },
-                          "line": 624
+                          "line": 623
                         },
                         {
                           "type": "give",
@@ -10469,7 +10462,7 @@ const program = {
                             "type": "literal",
                             "value": "/"
                           },
-                          "line": 624
+                          "line": 623
                         },
                         {
                           "type": "give",
@@ -10478,10 +10471,10 @@ const program = {
                             "type": "literal",
                             "value": true
                           },
-                          "line": 624
+                          "line": 623
                         }
                       ],
-                      "line": 624
+                      "line": 623
                     },
                     {
                       "type": "show",
@@ -10498,7 +10491,7 @@ const program = {
                             "type": "literal",
                             "value": "outlined"
                           },
-                          "line": 625
+                          "line": 624
                         },
                         {
                           "type": "give",
@@ -10507,7 +10500,7 @@ const program = {
                             "type": "literal",
                             "value": "/docs"
                           },
-                          "line": 625
+                          "line": 624
                         },
                         {
                           "type": "give",
@@ -10516,29 +10509,29 @@ const program = {
                             "type": "literal",
                             "value": true
                           },
-                          "line": 625
+                          "line": 624
                         }
                       ],
-                      "line": 625
+                      "line": 624
                     }
                   ],
-                  "line": 623
+                  "line": 622
                 }
               ],
-              "line": 619
+              "line": 618
             },
             {
               "type": "show",
               "kind": "Footer",
               "content": null,
               "children": [],
-              "line": 626
+              "line": 625
             }
           ],
-          "line": 617
+          "line": 616
         }
       ],
-      "line": 616
+      "line": 615
     }
   ],
   "basePath": "/Intention-site"

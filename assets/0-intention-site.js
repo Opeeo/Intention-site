@@ -87,7 +87,7 @@ class SlotElement extends HTMLElement {
 class SiteShell extends SlotElement {
   constructor() {
     super(`
-      :host { display: block; position: relative; overflow: visible; background: #f8f8fc; color: #161720; }
+      :host { display: block; position: relative; overflow: clip; background: #f8f8fc; color: #161720; }
       .glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(700px circle at var(--x, 75%) var(--y, 7%), #7658ff20, transparent 55%); transition: background .2s; }
       .grain { position: absolute; inset: 0; pointer-events: none; opacity: .16; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E"); }
       .content { position: relative; }
@@ -107,7 +107,7 @@ class SiteNavbar extends SlotElement {
       :host { display: block; position: sticky; top: 0; z-index: 20; border-bottom: 1px solid #17182410; background: #f8f8fccc; backdrop-filter: blur(18px) saturate(150%); }
       nav { max-width: 1180px; margin: auto; min-height: 74px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
       ::slotted(*) { min-width: 0; }
-      @media (max-width: 760px) { nav { min-height: 64px; padding: 0 16px; } ::slotted(intent-nav-links) { display: none; } }
+      @media (max-width: 760px) { nav { min-height: 64px; padding: 0 16px; } ::slotted(intention-nav-links) { display: none; } }
     `, '<nav><slot></slot></nav>');
   }
 }
@@ -451,24 +451,34 @@ class DocTab extends SlotElement {
   }
 }
 
+class DocumentationPage extends SlotElement {
+  constructor() {
+    super(`
+      :host{display:grid;grid-template-rows:auto minmax(0,1fr);height:100dvh;min-height:0;overflow:hidden;background:#f8f8fc;color:#161720}
+      ::slotted(*){min-height:0}
+    `);
+  }
+}
+
 class DocumentationLayout extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
     this.shadowRoot.innerHTML = `
       <style>
-        :host{--sticky-gap:18px;display:block;max-width:1460px;margin:auto;padding:34px 24px 100px}
+        *,*::before,*::after{box-sizing:border-box}
+        :host{display:flex;flex-direction:column;width:100%;height:100%;min-height:0;max-width:1460px;margin:auto;padding:26px 24px 0;overflow:hidden}
         .mobile{display:none;width:100%;margin-bottom:18px;padding:12px 14px;border:1px solid #17182416;border-radius:12px;background:#fff;color:#252631;font:780 .9rem system-ui;text-align:left;cursor:pointer}
-        .layout{display:grid;grid-template-columns:230px minmax(0,790px) 190px;align-items:start;justify-content:center;gap:clamp(30px,4vw,64px)}
-        aside{position:sticky;top:var(--sticky-gap);align-self:start;max-height:calc(100vh - var(--sticky-gap) - 24px);overflow:auto;scrollbar-width:thin;scrollbar-gutter:stable}
+        .layout{display:grid;grid-template-columns:230px minmax(0,790px) 190px;align-items:stretch;justify-content:center;gap:clamp(30px,4vw,64px);flex:1;min-height:0}
+        aside{min-height:0;max-height:100%;padding-bottom:24px;overflow:auto;scrollbar-width:thin;scrollbar-gutter:stable}
         .sidebar{padding-right:18px;border-right:1px solid #17182410}.toc{padding-left:2px}
         .title{display:block;margin:0 0 18px;color:#22232d;font-size:.76rem;font-weight:850;letter-spacing:.09em;text-transform:uppercase}
         .group{display:block;margin:22px 0 7px;color:#9697a3;font-size:.68rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
         nav{display:grid;gap:2px}a{display:block;padding:7px 10px;border-radius:8px;color:#666876;font-size:.82rem;line-height:1.3;text-decoration:none;transition:color .18s,background .18s}
         a:hover{color:#5437db;background:#6849f50a}a.active{color:#5437db;background:#6849f512;font-weight:780}
-        main{min-width:0}.toc nav{gap:5px}.toc a{padding:4px 0;border-radius:0;font-size:.76rem}.toc a.active{padding-left:9px;border-left:2px solid #6545f5;background:transparent}
+        main{min-width:0;min-height:0;height:100%;padding:0 10px 80px 0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-gutter:stable}.toc nav{gap:5px}.toc a{padding:4px 0;border-radius:0;font-size:.76rem}.toc a.active{padding-left:9px;border-left:2px solid #6545f5;background:transparent}
         @media(max-width:1120px){.layout{grid-template-columns:220px minmax(0,790px)}.toc{display:none}}
-        @media(max-width:780px){:host{padding:18px 16px 70px}.mobile{display:block}.layout{display:block}.sidebar{display:none;position:static;max-height:none;margin-bottom:24px;padding:18px;border:1px solid #17182412;border-radius:16px;background:#fff}.sidebar.open{display:block}main{width:100%}}
+        @media(max-width:780px){:host{padding:14px 16px 0}.mobile{display:block;flex:0 0 auto}.layout{display:block;position:relative;min-height:0}.sidebar{display:none;position:absolute;inset:0 0 auto;z-index:5;max-height:100%;margin:0;padding:18px;border:1px solid #17182412;border-radius:16px;background:#fff;box-shadow:0 18px 50px #25203820}.sidebar.open{display:block}main{width:100%;height:100%;padding-right:0}}
       </style>
       <button class="mobile" type="button" aria-expanded="false">Parcourir la documentation</button>
       <div class="layout">
@@ -513,7 +523,7 @@ class DocumentationLayout extends HTMLElement {
     this.observer = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((left, right) => left.boundingClientRect.top - right.boundingClientRect.top)[0];
       if (visible) this.setActive(visible.target.id);
-    }, { rootMargin: "-12% 0px -72%", threshold: [0, .15, .5] });
+    }, { root: this.shadowRoot.querySelector("main"), rootMargin: "-8% 0px -74%", threshold: [0, .15, .5] });
     sections.forEach((section) => this.observer.observe(section));
   }
   navigationLink(id, title) {
@@ -706,6 +716,7 @@ define("intention-faq-list", FaqList);
 define("intention-faq-item", FaqItem);
 define("intention-doc-tabs", DocsTabs);
 define("intention-doc-tab", DocTab);
+define("intention-doc-page", DocumentationPage);
 define("intention-doc-layout", DocumentationLayout);
 define("intention-doc-section", DocumentationSection);
 define("intention-doc-text", DocumentationText);
@@ -749,6 +760,7 @@ export default {
   faq: "intention-faq-item",
   docsTabs: "intention-doc-tabs",
   docsTab: "intention-doc-tab",
+  docsPage: "intention-doc-page",
   docsLayout: "intention-doc-layout",
   docSection: { tag: "intention-doc-section", properties: { anchor: "id" } },
   docText: "intention-doc-text",
