@@ -3,30 +3,30 @@
     "name": "Home",
     "path": "/",
     "component": "Home",
-    "line": 8
+    "line": 9
   },
   {
     "name": "Documentation",
     "path": "/docs",
     "component": "Documentation",
-    "line": 9
+    "line": 10
   },
   {
     "name": "Reference",
     "path": "/reference",
     "component": "Reference",
-    "line": 10
+    "line": 11
   },
   {
     "name": "Product",
     "path": "/examples/:id",
     "component": "Product",
-    "line": 11
+    "line": 12
   },
   {
     "name": "NotFound",
     "path": "*",
     "component": "NotFound",
-    "line": 12
+    "line": 13
   }
 ]

@@ -1,4 +1,4 @@
-const TOP_LEVEL = /^(application|start|library|use design|design|shared|routes|component)\b/;
+const TOP_LEVEL = /^(application|start|library|shared|routes|theme|look|component)\b/;
 
 export class IntentionSyntaxError extends Error {
   constructor(message, line) {
@@ -80,6 +80,10 @@ function splitArguments(source, line) {
 
 function statement(text, line) {
   let match;
+
+  if ((match = text.match(/^stylesheet\s*=\s*(.+)$/))) {
+    return { type: "stylesheet", source: unquote(match[1], line), line };
+  }
 
   if ((match = text.match(/^memory ([A-Za-z][\w]*)\s*=\s*(.+)$/))) {
     return { type: "memory", name: match[1], initial: value(match[2], line), line };
@@ -250,7 +254,14 @@ function statement(text, line) {
         if (!argumentMatch) {
           throw new IntentionSyntaxError(`paramètre invalide « ${argument} »`, line);
         }
-        children.push({ type: "give", name: argumentMatch[1], value: value(argumentMatch[2], line), line });
+        children.push({
+          type: "give",
+          name: argumentMatch[1],
+          value: ["look", "enter"].includes(argumentMatch[1])
+            ? { type: "literal", value: unquote(argumentMatch[2], line) }
+            : value(argumentMatch[2], line),
+          line,
+        });
       }
     }
     return {
@@ -267,15 +278,15 @@ function statement(text, line) {
 
 export function parseIntention(source, filename = "app.intent") {
   const program = {
-    version: "0.6",
+    version: "0.8",
     filename,
     application: "Intention application",
     start: null,
     libraries: [],
-    designs: [],
-    designMap: {},
     routes: [],
     shared: [],
+    theme: {},
+    looks: [],
     components: [],
   };
   const stack = [];
@@ -304,16 +315,16 @@ export function parseIntention(source, filename = "app.intent") {
         program.start = match[1];
       } else if ((match = text.match(/^library\s*=\s*(.+)$/))) {
         program.libraries.push(unquote(match[1], line));
-      } else if ((match = text.match(/^design\s*=\s*(.+)$/))) {
-        program.designs.push(unquote(match[1], line));
-      } else if ((match = text.match(/^use design\s+(.+)$/))) {
-        program.designs.push(unquote(match[1], line));
-      } else if ((match = text.match(/^design\s+([A-Za-z][\w-]*)\s+uses\s+(.+)$/))) {
-        program.designMap[match[1]] = unquote(match[2], line);
       } else if ((match = text.match(/^shared ([A-Za-z][\w]*)\s*=\s*(.+)$/))) {
         program.shared.push({ name: match[1], initial: value(match[2], line), line });
       } else if (text === "routes") {
         stack.push({ indent: 0, kind: "routes" });
+      } else if (text === "theme") {
+        stack.push({ indent: 0, kind: "theme" });
+      } else if ((match = text.match(/^look\s+([A-Z][A-Za-z0-9_]*)$/))) {
+        const look = { name: match[1], declarations: [], responsive: [], line };
+        program.looks.push(look);
+        stack.push({ indent: 0, kind: "look", look });
       } else if ((match = text.match(/^component\s+([A-Za-z][\w]*)$/))) {
         const component = { name: match[1], body: [], line };
         program.components.push(component);
@@ -357,6 +368,73 @@ export function parseIntention(source, filename = "app.intent") {
       continue;
     }
 
+    if (stack.at(-1).kind === "theme") {
+      const group = text.match(/^([A-Za-z][\w-]*)$/);
+      if (!group) throw new IntentionSyntaxError("groupe de thème attendu", line);
+      if (program.theme[group[1]]) throw new IntentionSyntaxError(`groupe de thème « ${group[1]} » déjà défini`, line);
+      program.theme[group[1]] = {};
+      stack.push({ indent, kind: "theme-group", group: group[1] });
+      continue;
+    }
+
+    if (stack.at(-1).kind === "theme-group") {
+      const token = text.match(/^([A-Za-z][\w-]*)\s*=\s*(.+)$/);
+      if (!token) throw new IntentionSyntaxError("token attendu sous la forme nom = valeur", line);
+      const tokens = program.theme[stack.at(-1).group];
+      if (tokens[token[1]] != null) throw new IntentionSyntaxError(`token « ${token[1]} » déjà défini`, line);
+      tokens[token[1]] = unquote(token[2], line);
+      continue;
+    }
+
+    if (stack.at(-1).kind === "look" || stack.at(-1).kind === "look-responsive") {
+      const parent = stack.at(-1);
+      const responsive = parent.kind === "look-responsive" ? parent.responsive : null;
+      const responsiveMatch = text.match(/^on\s+([A-Za-z][\w-]*)$/);
+      if (responsiveMatch && parent.kind === "look") {
+        const adaptation = { breakpoint: responsiveMatch[1], declarations: [], line };
+        parent.look.responsive.push(adaptation);
+        stack.push({ indent, kind: "look-responsive", responsive: adaptation });
+        continue;
+      }
+      const declaration = text.match(/^([A-Za-z][\w-]*)(?:\s+(.+))$/);
+      if (!declaration) throw new IntentionSyntaxError("propriété de look attendue", line);
+      (responsive ? responsive.declarations : parent.look.declarations).push({
+        name: declaration[1],
+        values: declaration[2].trim().split(/\s+/),
+        line,
+      });
+      continue;
+    }
+
+    if (stack.at(-1).kind === "style-rule") {
+      const declaration = text.match(/^([A-Za-z-][\w-]*)\s*:\s*(.+)$/);
+      if (!declaration) {
+        throw new IntentionSyntaxError("propriété de style invalide, utilisez propriété: valeur", line);
+      }
+      stack.at(-1).declarations.push({
+        property: declaration[1],
+        value: declaration[2].trim(),
+        line,
+      });
+      continue;
+    }
+
+    if (stack.at(-1).kind === "style") {
+      const selector = unquote(text, line).trim();
+      if (!selector) throw new IntentionSyntaxError("sélecteur de style manquant", line);
+      const rule = { selector, declarations: [], line };
+      stack.at(-1).rules.push(rule);
+      stack.push({ indent, kind: "style-rule", declarations: rule.declarations });
+      continue;
+    }
+
+    if (text === "style") {
+      const node = { type: "style", rules: [], line };
+      stack.at(-1).children.push(node);
+      stack.push({ indent, kind: "style", rules: node.rules });
+      continue;
+    }
+
     const node = statement(text, line);
     const siblings = stack.at(-1).children;
     if (node.type === "otherwise") {
@@ -373,6 +451,11 @@ export function parseIntention(source, filename = "app.intent") {
     throw new IntentionSyntaxError("au moins un composant est nécessaire", 1);
   }
   const componentNames = new Set(program.components.map((component) => component.name));
+  const lookNames = new Set();
+  for (const look of program.looks) {
+    if (lookNames.has(look.name)) throw new IntentionSyntaxError(`look « ${look.name} » déjà défini`, look.line);
+    lookNames.add(look.name);
+  }
   const sharedNames = new Set();
   for (const item of program.shared) {
     if (sharedNames.has(item.name)) {

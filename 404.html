@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Application créée avec Intention">
     <title>NotFound — Intention — Le frontend qui se lit</title>
+    <link rel="stylesheet" href="/Intention-site/vendor/webawesome/styles/webawesome.css">
     <style>
       html { color-scheme: light dark; font-family: system-ui, sans-serif; }
       body { margin: 0; min-height: 100vh; }
@@ -28,11 +29,229 @@
   intention-root[data-intention-ssr] .intent-ssr-value-answer { color: #696b7a; }
   intention-root[data-intention-ssr] a.intent-ssr-button,
   intention-root[data-intention-ssr] button.intent-ssr-button { display: inline-flex; padding: .8rem 1.1rem; margin: .25rem; border: 1px solid #6c4cff55; border-radius: 999px; color: #5133d7; background: #fff; font: 700 1rem system-ui, sans-serif; text-decoration: none; }
+  intention-root[data-intention-ssr] .intent-enter-fade-up { animation: intent-fade-up .65s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes intent-fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 
+      intention-root[data-intention-ssr]{--intent-colors-style-ink:#10231f;--intent-colors-style-midnight:#17243f;--intent-colors-style-mint:#9ff3d7;--intent-colors-style-text:#effff9;--intent-colors-style-muted:#b7c6c1;--intent-spacing-style-tiny:6px;--intent-spacing-style-compact:10px;--intent-spacing-style-normal:16px;--intent-spacing-style-comfortable:24px;--intent-spacing-style-spacious:38px;--intent-corners-style-medium:16px;--intent-corners-style-large:28px;--intent-corners-style-pill:999px;--intent-shadows-style-floating:0 28px 75px #10231f3d;--intent-borders-style-mint:1px solid #9ff3d744;--intent-borders-style-dark:1px solid #ffffff18;--intent-sizes-style-small:.72rem;--intent-sizes-style-body:1rem;--intent-sizes-style-title:clamp(1.8rem, 7cqw, 3.25rem);--intent-breakpoints-style-mobile:680}
+intention-root[data-intention-ssr] .intent-look-style-comparison-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--intent-spacing-style-comfortable);width:100%}
+@media(max-width:680px){intention-root[data-intention-ssr] .intent-look-style-comparison-grid{grid-template-columns:repeat(1,minmax(0,1fr))}}
+intention-root[data-intention-ssr] .intent-look-style-showcase-stack{display:flex;flex-direction:column;gap:var(--intent-spacing-style-comfortable);width:100%}
+intention-root[data-intention-ssr] .intent-look-style-intent-card{display:flex;flex-direction:column;gap:var(--intent-spacing-style-normal);background:var(--intent-colors-style-ink);color:var(--intent-colors-style-text);border:var(--intent-borders-style-mint);padding:var(--intent-spacing-style-spacious);border-radius:var(--intent-corners-style-large);box-shadow:var(--intent-shadows-style-floating);transition:transform .2s ease, filter .2s ease, box-shadow .2s ease}
+intention-root[data-intention-ssr] .intent-look-style-intent-card:hover{transform:translateY(-4px)}
+@media(max-width:680px){intention-root[data-intention-ssr] .intent-look-style-intent-card{padding:var(--intent-spacing-style-comfortable)}}
+intention-root[data-intention-ssr] .intent-look-style-label{color:var(--intent-colors-style-mint);font-size:var(--intent-sizes-style-small);font-weight:800;letter-spacing:.08em}
+intention-root[data-intention-ssr] .intent-look-style-title{color:var(--intent-colors-style-text);font-size:var(--intent-sizes-style-title);font-weight:800;line-height:1;letter-spacing:-.045em}
+intention-root[data-intention-ssr] .intent-look-style-copy{color:var(--intent-colors-style-muted);font-size:var(--intent-sizes-style-body);line-height:1.65}
+intention-root[data-intention-ssr] .intent-look-style-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--intent-spacing-style-compact)}
+@media(max-width:680px){intention-root[data-intention-ssr] .intent-look-style-stats{grid-template-columns:repeat(1,minmax(0,1fr))}}
+intention-root[data-intention-ssr] .intent-look-style-stat{display:flex;flex-direction:column;gap:var(--intent-spacing-style-tiny);background:var(--intent-colors-style-midnight);color:var(--intent-colors-style-text);border:var(--intent-borders-style-dark);padding:var(--intent-spacing-style-normal);border-radius:var(--intent-corners-style-medium)}
+intention-root[data-intention-ssr] .intent-look-style-stat-value{color:var(--intent-colors-style-text);font-weight:800}
+intention-root[data-intention-ssr] .intent-look-style-stat-label{color:var(--intent-colors-style-muted);font-size:var(--intent-sizes-style-small)}
+intention-root[data-intention-ssr] .intent-look-style-action{background:var(--intent-colors-style-mint);color:var(--intent-colors-style-ink);padding:var(--intent-spacing-style-compact) var(--intent-spacing-style-normal);border-radius:var(--intent-corners-style-pill);font-weight:800;width:fit-content;transition:transform .2s ease, filter .2s ease, box-shadow .2s ease}
+intention-root[data-intention-ssr] .intent-look-style-action:hover{transform:translateY(-4px)}
+intention-root[data-intention-ssr] .intent-look-style-action:active{transform:scale(.97)}
+      intention-root[data-intention-ssr] [data-intention-component="DocumentationGuide"] { display: block; height: 100%; min-height: 0; overflow: hidden; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationPage"] { display: grid; grid-template-rows: auto minmax(0, 1fr); height: 100dvh; min-height: 0; overflow: hidden; color: #171821; background: #f8f8fc; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationLayout"] { display: grid; grid-template-columns: 230px minmax(0, 850px); align-items: stretch; justify-content: center; gap: clamp(30px, 4vw, 64px); width: 100%; height: 100%; min-height: 0; max-width: 1460px; margin: auto; padding: 26px 24px 0; overflow: hidden; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationLayout"] .sidebar { min-height: 0; overflow: auto; padding: 0 18px 24px 0; border-right: 1px solid #17182410; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationLayout"] .sidebar-title { display: block; margin: 22px 10px 7px; color: #999aa6; font-size: .68rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationLayout"] .sidebar-link { display: block; width: 100%; min-height: 0; padding: 8px 10px; border: 0; text-align: left; color: #5f6170; background: transparent; font-size: .82rem; border-radius: 8px; transition: color .18s ease, background .18s ease, transform .18s ease, box-shadow .18s ease; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationLayout"] .sidebar-link:hover { color: #5437db; background: transparent; transform: translateX(3px); }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationLayout"] .sidebar-link.intent-active { color: #5437db; background: linear-gradient(90deg, #6849f514, transparent); box-shadow: inset 2px 0 #6545f5; font-weight: 800; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationLayout"] .content { min-width: 0; min-height: 0; height: 100%; overflow: auto; padding: 0 10px 80px 0; scroll-behavior: smooth; overscroll-behavior: contain; }
+@media (max-width: 1120px) { intention-root[data-intention-ssr] [data-intention-component="DocumentationLayout"] { grid-template-columns: 220px minmax(0, 790px); } }
+@media (max-width: 780px) { intention-root[data-intention-ssr] [data-intention-component="DocumentationLayout"] { grid-template-columns: 1fr; padding: 14px 16px 0; } }
+@media (max-width: 780px) { intention-root[data-intention-ssr] [data-intention-component="DocumentationLayout"] .sidebar { display: none; } }
+@media (max-width: 780px) { intention-root[data-intention-ssr] [data-intention-component="DocumentationLayout"] .content { width: 100%; padding-right: 0; } }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationSection"] { display: block; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationSection"] .doc-section { padding: 44px 0 70px; border-bottom: 1px solid #17182410; scroll-margin-top: 24px; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationText"] [data-intention-kind="message"] { max-width: 780px; margin: 16px 0; color: #555866; font-size: .98rem; line-height: 1.82; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationNote"] .note { display: grid; gap: 5px; margin: 22px 0; padding: 18px 20px; border: 1px solid #6849f529; border-left: 4px solid #6545f5; border-radius: 12px; background: #6849f50b; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationNote"] .tip { border-color: #16a88335; border-left-color: #16a883; background: #16a8830b; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationNote"] [data-intention-kind="heading"] { margin: 0; font-size: .92rem; }
+intention-root[data-intention-ssr] [data-intention-component="DocumentationNote"] [data-intention-kind="message"] { margin: 0; font-size: .9rem; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceLayout"] { display: grid; grid-template-columns: 252px minmax(0, 900px); align-items: stretch; justify-content: center; gap: clamp(32px, 4vw, 72px); width: 100%; height: 100%; min-height: 0; max-width: 1540px; margin: auto; padding: 26px 24px 0; overflow: hidden; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceLayout"] .sidebar { min-height: 0; overflow: auto; padding: 0 18px 28px 0; border-right: 1px solid #17182410; scrollbar-width: thin; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceLayout"] .sidebar-title { display: block; margin: 22px 10px 7px; color: #999aa6; font-size: .68rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceLayout"] .sidebar-link { display: block; width: 100%; min-height: 0; padding: 8px 10px; border: 0; text-align: left; color: #5f6170; background: transparent; font-size: .82rem; border-radius: 8px; transition: color .18s ease, background .18s ease, transform .18s ease, box-shadow .18s ease; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceLayout"] .sidebar-link:hover { color: #5437db; background: transparent; transform: translateX(3px); }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceLayout"] .sidebar-link.intent-active { color: #5437db; background: linear-gradient(90deg, #6849f514, transparent); box-shadow: inset 2px 0 #6545f5; font-weight: 800; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceLayout"] .content { min-width: 0; min-height: 0; height: 100%; overflow: auto; padding: 0 12px 90px 0; scroll-behavior: smooth; overscroll-behavior: contain; }
+@media (max-width: 1120px) { intention-root[data-intention-ssr] [data-intention-component="ReferenceLayout"] { grid-template-columns: 220px minmax(0, 820px); } }
+@media (max-width: 780px) { intention-root[data-intention-ssr] [data-intention-component="ReferenceLayout"] { grid-template-columns: 1fr; padding: 14px 16px 0; } }
+@media (max-width: 780px) { intention-root[data-intention-ssr] [data-intention-component="ReferenceLayout"] .sidebar { display: none; } }
+@media (max-width: 780px) { intention-root[data-intention-ssr] [data-intention-component="ReferenceLayout"] .content { width: 100%; padding-right: 0; } }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceSection"] { display: block; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceSection"] .section { padding: 44px 0 70px; border-bottom: 1px solid #17182410; scroll-margin-top: 24px; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceSection"] .group { margin: 0 0 10px; color: #6545f5; font-size: .72rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceSection"] [data-intention-kind="heading"] { max-width: 820px; margin: 0 0 16px; color: #171821; font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1; letter-spacing: -.055em; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceSection"] .lead { max-width: 790px; margin: 0 0 30px; color: #606270; font-size: 1rem; line-height: 1.75; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceTable"] { display: block; margin: 24px 0; overflow: hidden; border: 1px solid #17182412; border-radius: 16px; background: #ffffff; box-shadow: 0 12px 35px #25203808; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceTable"] .title { display: block; padding: 12px 16px; color: #777987; background: #f1f1f7; font-size: .7rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceRow"] { display: grid; grid-template-columns: minmax(120px, .65fr) minmax(180px, 1fr) minmax(180px, 1fr) minmax(220px, 1.35fr); min-width: 0; border-top: 1px solid #1718240d; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceRow"] .cell { min-width: 0; padding: 14px 16px; overflow-wrap: anywhere; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceRow"] .name { color: #5437db; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; font-weight: 850; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceRow"] .syntax { color: #dcd8ef; background: #22232d; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .75rem; white-space: pre-wrap; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceRow"] .values { color: #4f5261; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .75rem; line-height: 1.55; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceRow"] .description { color: #606270; font-size: .82rem; line-height: 1.55; }
+@media (max-width: 760px) { intention-root[data-intention-ssr] [data-intention-component="ReferenceRow"] { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { intention-root[data-intention-ssr] [data-intention-component="ReferenceRow"] .cell { padding: 11px 14px; } }
+@media (max-width: 760px) { intention-root[data-intention-ssr] [data-intention-component="ReferenceRow"] .name { padding-bottom: 6px; } }
+@media (max-width: 760px) { intention-root[data-intention-ssr] [data-intention-component="ReferenceRow"] .syntax { margin: 0 12px; border-radius: 8px; } }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceNote"] .note { display: grid; gap: 6px; margin: 22px 0; padding: 18px 20px; border: 1px solid #6849f529; border-left: 4px solid #6545f5; border-radius: 12px; background: #6849f50b; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceNote"] .warning { border-color: #e49a3538; border-left-color: #dc8a18; background: #e49a350c; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceNote"] .success { border-color: #16a88335; border-left-color: #16a883; background: #16a8830b; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceNote"] [data-intention-kind="heading"] { margin: 0; font-size: .92rem; }
+intention-root[data-intention-ssr] [data-intention-component="ReferenceNote"] [data-intention-kind="message"] { margin: 0; font-size: .88rem; line-height: 1.65; }
+intention-root[data-intention-ssr] [data-intention-component="Navigation"] { display: block; position: sticky; top: 0; z-index: 30; }
+intention-root[data-intention-ssr] [data-intention-component="MetricsRow"] { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 1180px; margin: 0 auto 70px; padding: 24px; border: 1px solid #17182410; border-radius: 22px; background: #ffffffa8; box-shadow: 0 18px 50px #2520380b; }
+@media (max-width: 720px) { intention-root[data-intention-ssr] [data-intention-component="MetricsRow"] { grid-template-columns: repeat(2, 1fr); margin-left: 16px; margin-right: 16px; padding: 12px; } }
+intention-root[data-intention-ssr] [data-intention-component="MetricItem"] { display: grid; gap: 5px; padding: 24px; text-align: center; border-right: 1px solid #1718240d; }
+intention-root[data-intention-ssr] [data-intention-component="MetricItem"] .value { color: #6545f5; font-size: 2rem; font-weight: 900; }
+intention-root[data-intention-ssr] [data-intention-component="MetricItem"] .label { color: #707280; font-size: .8rem; }
+intention-root[data-intention-ssr] [data-intention-component="FeatureItem"] { display: flex; flex-direction: column; min-height: 220px; padding: 24px; border: 1px solid #17182412; border-radius: 20px; background: #ffffff; box-shadow: 0 14px 40px #30275d0b; transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease; }
+intention-root[data-intention-ssr] [data-intention-component="FeatureItem"]:hover { transform: translateY(-7px); border-color: #6849f53d; box-shadow: 0 24px 55px #35266c18; }
+intention-root[data-intention-ssr] [data-intention-component="FeatureItem"] .symbol { align-self: flex-start; margin-bottom: 22px; padding: 10px 12px; border-radius: 12px; background: linear-gradient(145deg, #f0ecff, #e8fff8); }
+intention-root[data-intention-ssr] [data-intention-component="StepsRow"] { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 48px; }
+@media (max-width: 760px) { intention-root[data-intention-ssr] [data-intention-component="StepsRow"] { grid-template-columns: 1fr; } }
+intention-root[data-intention-ssr] [data-intention-component="StepItem"] { display: grid; gap: 10px; padding: 26px; border-top: 1px solid #1a1b251d; border-radius: 0 0 18px 18px; background: linear-gradient(180deg, #ffffff00, #ffffff88); }
+intention-root[data-intention-ssr] [data-intention-component="StepItem"] .number { color: #6545f5; font-weight: 900; margin-bottom: 25px; }
+intention-root[data-intention-ssr] [data-intention-component="StepItem"] [data-intention-kind="heading"] { margin: 0; font-size: 1.35rem; }
+intention-root[data-intention-ssr] [data-intention-component="StepItem"] [data-intention-kind="message"] { margin: 0; }
+intention-root[data-intention-ssr] [data-intention-component="PrinciplesList"] { display: grid; gap: 12px; }
+intention-root[data-intention-ssr] [data-intention-component="PrincipleItem"] { display: grid; grid-template-columns: 48px minmax(0, 1fr); column-gap: 14px; padding: 16px 0; }
+intention-root[data-intention-ssr] [data-intention-component="PrincipleItem"] .symbol { grid-row: span 2; color: #6545f5; font-weight: 900; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 11px; background: #6849f514; }
+intention-root[data-intention-ssr] [data-intention-component="PrincipleItem"] [data-intention-kind="heading"] { margin: 0; font-size: 1rem; letter-spacing: -.02em; }
+intention-root[data-intention-ssr] [data-intention-component="PrincipleItem"] [data-intention-kind="message"] { margin: 0; font-size: .9rem; }
+intention-root[data-intention-ssr] [data-intention-component="TechStrip"] { display: flex; gap: 9px; flex-wrap: wrap; }
+intention-root[data-intention-ssr] [data-intention-component="DocsGrid"] { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 42px; }
+@media (max-width: 900px) { intention-root[data-intention-ssr] [data-intention-component="DocsGrid"] { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { intention-root[data-intention-ssr] [data-intention-component="DocsGrid"] { grid-template-columns: 1fr; } }
+intention-root[data-intention-ssr] [data-intention-component="DocItem"] { display: flex; flex-direction: column; gap: 10px; min-width: 0; padding: 20px; border: 1px solid #17182412; border-radius: 16px; background: #ffffff; box-shadow: 0 12px 35px #2520380a; transition: transform .22s ease, box-shadow .22s ease; }
+intention-root[data-intention-ssr] [data-intention-component="DocItem"]:hover { transform: translateY(-4px); box-shadow: 0 20px 44px #35266c14; }
+intention-root[data-intention-ssr] [data-intention-component="DocItem"] [data-intention-kind="heading"] { margin: 0; font-size: 1.05rem; }
+intention-root[data-intention-ssr] [data-intention-component="DocItem"] [data-intention-kind="message"] { margin: 0; font-size: .86rem; }
+intention-root[data-intention-ssr] [data-intention-component="DocItem"] .syntax { margin-top: auto; padding: 10px; overflow: auto; border-radius: 9px; color: #dcd8ef; background: #22232d; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .74rem; white-space: pre-wrap; }
+intention-root[data-intention-ssr] [data-intention-component="FaqList"] { display: grid; gap: 12px; margin-top: 28px; }
+intention-root[data-intention-ssr] [data-intention-component="FaqItem"] { display: block; padding: 22px; border: 1px solid #17182412; border-radius: 16px; background: #ffffff; box-shadow: 0 8px 28px #25203808; transition: border-color .2s ease, transform .2s ease; }
+intention-root[data-intention-ssr] [data-intention-component="FaqItem"]:hover { transform: translateY(-2px); border-color: #6849f540; }
+intention-root[data-intention-ssr] [data-intention-component="FaqItem"] [data-intention-kind="heading"] { margin: 0 0 7px; font-size: 1.05rem; }
+intention-root[data-intention-ssr] [data-intention-component="FaqItem"] [data-intention-kind="message"] { margin: 0; }
+intention-root[data-intention-ssr] [data-intention-component="SiteShell"] { display: block; min-height: 100vh; overflow: clip; color: #171821; background: radial-gradient(circle at 82% 5%, #7658ff1f, transparent 28%), #f8f8fc; }
+intention-root[data-intention-ssr] [data-intention-component="SiteNavbar"] { display: block; position: sticky; top: 0; z-index: 30; border-bottom: 1px solid #17182410; background: #f8f8fce8; backdrop-filter: blur(18px) saturate(150%); }
+intention-root[data-intention-ssr] [data-intention-component="SiteNavbar"] .navbar { max-width: 1180px; min-height: 74px; margin: auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+@media (max-width: 760px) { intention-root[data-intention-ssr] [data-intention-component="SiteNavbar"] .navbar { min-height: 64px; padding: 0 16px; } }
+@media (max-width: 760px) { intention-root[data-intention-ssr] [data-intention-component="SiteNavbar"] [data-intention-component="NavLinks"] { display: none; } }
+intention-root[data-intention-ssr] [data-intention-component="BrandMark"] { display: inline-flex; align-items: center; min-width: 0; }
+intention-root[data-intention-ssr] [data-intention-component="BrandMark"] .brand { width: 132px; height: 44px; object-fit: contain; }
+intention-root[data-intention-ssr] [data-intention-component="BrandMark"] .ribbon { display: none; width: 38px; height: 38px; object-fit: contain; }
+@media (max-width: 560px) { intention-root[data-intention-ssr] [data-intention-component="BrandMark"] .brand { display: none; } }
+@media (max-width: 560px) { intention-root[data-intention-ssr] [data-intention-component="BrandMark"] .ribbon { display: block; } }
+intention-root[data-intention-ssr] [data-intention-component="NavLinks"] { display: flex; align-items: center; justify-content: flex-end; gap: 4px; flex-wrap: wrap; }
+intention-root[data-intention-ssr] [data-intention-component="ActionRow"] { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+intention-root[data-intention-ssr] [data-intention-component="MarketingSection"] { display: block; }
+intention-root[data-intention-ssr] [data-intention-component="MarketingSection"] .section { max-width: 1180px; margin: auto; padding: clamp(82px, 11vw, 140px) 24px; scroll-margin-top: 80px; }
+intention-root[data-intention-ssr] [data-intention-component="MarketingSection"] .soft { max-width: none; padding-left: max(24px, calc((100vw - 1132px) / 2)); padding-right: max(24px, calc((100vw - 1132px) / 2)); background: #efeff8; }
+intention-root[data-intention-ssr] [data-intention-component="MarketingSection"] .dark { max-width: none; padding-left: max(24px, calc((100vw - 1132px) / 2)); padding-right: max(24px, calc((100vw - 1132px) / 2)); color: #f8f7ff; background: #171821; }
+@media (max-width: 560px) { intention-root[data-intention-ssr] [data-intention-component="MarketingSection"] .section { padding-left: 16px; padding-right: 16px; } }
+intention-root[data-intention-ssr] [data-intention-component="CtaPanel"] { display: block; max-width: 1120px; margin: 100px auto; }
+intention-root[data-intention-ssr] [data-intention-component="CtaPanel"] .cta { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: clamp(55px, 8vw, 95px) 28px; border-radius: 32px; color: #f7f5ff; background: radial-gradient(circle at 20% 0%, #8a6cff, transparent 38%), linear-gradient(135deg, #24202f, #171821); box-shadow: 0 35px 90px #35266c30; text-align: center; overflow: hidden; }
+@media (max-width: 1160px) { intention-root[data-intention-ssr] [data-intention-component="CtaPanel"] { margin-left: 16px; margin-right: 16px; } }
+intention-root[data-intention-ssr] [data-intention-component="SiteFooter"] { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 28px; max-width: 1180px; margin: auto; padding: 42px 24px 56px; border-top: 1px solid #17182412; color: #777988; }
+@media (max-width: 720px) { intention-root[data-intention-ssr] [data-intention-component="SiteFooter"] { grid-template-columns: 1fr; text-align: center; } }
+intention-root[data-intention-ssr] [data-intention-component="HeroSection"] { display: grid; grid-template-columns: minmax(0, 1.03fr) minmax(420px, .97fr); align-items: center; gap: clamp(38px, 7vw, 90px); max-width: 1180px; min-height: 720px; margin: auto; padding: 88px 24px 100px; }
+@media (max-width: 920px) { intention-root[data-intention-ssr] [data-intention-component="HeroSection"] { grid-template-columns: 1fr; min-height: auto; padding-top: 64px; } }
+@media (max-width: 560px) { intention-root[data-intention-ssr] [data-intention-component="HeroSection"] { padding: 48px 16px 72px; } }
+intention-root[data-intention-ssr] [data-intention-component="HeroCopy"] { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+intention-root[data-intention-ssr] [data-intention-component="HeroVisual"] { display: block; min-width: 0; }
+intention-root[data-intention-ssr] [data-intention-component="HeroVisual"] .visual { display: block; }
+intention-root[data-intention-ssr] [data-intention-component="Showcase"] { display: grid; position: relative; gap: 18px; }
+intention-root[data-intention-ssr] [data-intention-component="Showcase"]::before { content: ""; position: absolute; inset: 12% -12% 8%; z-index: -1; border-radius: 50%; background: linear-gradient(135deg, #7658ff44, #15c8a044); filter: blur(55px); }
+intention-root[data-intention-ssr] [data-intention-component="Showcase"] [data-intention-component="CodeWindow"] { width: 100%; }
+intention-root[data-intention-ssr] [data-intention-component="Showcase"] [data-intention-component="CounterDemo"] { width: 82%; margin: -48px 0 0 auto; position: relative; z-index: 2; }
+@media (max-width: 560px) { intention-root[data-intention-ssr] [data-intention-component="Showcase"] [data-intention-component="CounterDemo"] { width: 94%; margin-top: -26px; } }
+intention-root[data-intention-ssr] [data-intention-component="CodeWindow"] { display: block; min-width: 0; height: 100%; }
+intention-root[data-intention-ssr] [data-intention-component="CodeWindow"] .window { box-sizing: border-box; display: grid; grid-template-rows: auto minmax(0, 1fr); height: 100%; overflow: hidden; border: 1px solid #ffffff16; border-radius: 20px; color: #e9e7f2; background: #1b1c25; box-shadow: 0 28px 70px #26213d2e; }
+intention-root[data-intention-ssr] [data-intention-component="CodeWindow"] .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; padding: 0 16px; color: #adadba; background: #24252f; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .72rem; font-weight: 750; }
+intention-root[data-intention-ssr] [data-intention-component="CodeWindow"] .dots { display: flex; align-items: center; gap: 7px; }
+intention-root[data-intention-ssr] [data-intention-component="CodeWindow"] .dot { color: #ff6b6b; font-size: .72rem; line-height: 1; }
+intention-root[data-intention-ssr] [data-intention-component="CodeWindow"] .dot-yellow { color: #f6c85f; }
+intention-root[data-intention-ssr] [data-intention-component="CodeWindow"] .dot-green { color: #58c779; }
+intention-root[data-intention-ssr] [data-intention-component="CodeWindow"] .code { display: block; margin: 0; padding: 24px; overflow: auto; color: #e9e7f2; background: #1b1c25; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(.76rem, 1.45vw, .92rem); line-height: 1.75; white-space: pre-wrap; }
+intention-root[data-intention-ssr] [data-intention-component="DemoCard"] { display: block; }
+intention-root[data-intention-ssr] [data-intention-component="DemoCard"] wa-card { width: 100%; }
+intention-root[data-intention-ssr] [data-intention-component="DemoCard"] wa-card::part(base) { border: 1px solid #ffffff; background: #ffffffee; box-shadow: 0 22px 60px #241b5430; backdrop-filter: blur(16px); }
+intention-root[data-intention-ssr] [data-intention-component="DemoCard"] .body { display: grid; gap: 13px; padding: 4px; }
+intention-root[data-intention-ssr] [data-intention-component="DemoNumber"] [data-intention-kind="heading"] { min-width: 64px; margin: 0; text-align: center; color: #6545f5; font-size: 2rem; }
+intention-root[data-intention-ssr] [data-intention-component="DisplayTitle"] [data-intention-kind="heading"] { max-width: 760px; margin: 0; color: transparent; font-size: clamp(3.35rem, 7.2vw, 6.6rem); font-weight: 900; line-height: .92; letter-spacing: -.07em; text-wrap: balance; background: linear-gradient(125deg, #11121a 20%, #6545f5 72%, #17a985); background-clip: text; -webkit-background-clip: text; }
+intention-root[data-intention-ssr] [data-intention-component="LeadText"] [data-intention-kind="message"] { max-width: 680px; margin: 0; color: #666978; font-size: clamp(1rem, 2vw, 1.24rem); line-height: 1.7; text-wrap: pretty; }
+intention-root[data-intention-ssr] [data-intention-component="TrustLine"] [data-intention-kind="message"] { margin: 0; color: #7b7d89; font-size: .82rem; font-weight: 700; letter-spacing: .02em; }
+intention-root[data-intention-ssr] [data-intention-component="Eyebrow"] [data-intention-kind="message"] { margin: 0 0 12px; color: #6545f5; font-size: .76rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+intention-root[data-intention-ssr] [data-intention-component="SectionTitle"] [data-intention-kind="heading"] { max-width: 920px; margin: 0 0 18px; color: inherit; font-size: clamp(2.2rem, 5.5vw, 4.9rem); font-weight: 900; line-height: .98; letter-spacing: -.06em; text-wrap: balance; }
+intention-root[data-intention-ssr] [data-intention-component="SectionLead"] [data-intention-kind="message"] { max-width: 780px; margin: 0 0 34px; color: inherit; opacity: .68; font-size: 1.08rem; line-height: 1.75; }
+      intention-root[data-intention-ssr] [data-intention-component="ScssStyleCard"] {
+  display: block;
+  width: 100%;
+}
+intention-root[data-intention-ssr] [data-intention-component="ScssStyleCard"] .scss-style-card {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 16px;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  padding: clamp(24px, 6cqw, 38px);
+  color: #effff9;
+  background: radial-gradient(circle at 92% 4%, rgba(159, 243, 215, 0.32), transparent 34%), linear-gradient(145deg, #10231f, #17243f 72%);
+  border: 1px solid rgba(159, 243, 215, 0.27);
+  border-radius: 28px;
+  box-shadow: 0 28px 75px rgba(16, 35, 31, 0.24);
+}
+intention-root[data-intention-ssr] [data-intention-component="ScssStyleCard"] .scss-style-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -80px;
+  bottom: -110px;
+  width: 230px;
+  aspect-ratio: 1;
+  border: 42px solid rgba(124, 92, 255, 0.36);
+  border-radius: 50%;
+}
+intention-root[data-intention-ssr] [data-intention-component="ScssStyleCard"] .scss-style-label {
+  color: #9ff3d7;
+  font: 800 0.72rem/1.2 ui-monospace, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+intention-root[data-intention-ssr] [data-intention-component="ScssStyleCard"] .scss-style-title {
+  margin: 0;
+  color: #effff9;
+  font-size: clamp(1.8rem, 7cqw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+intention-root[data-intention-ssr] [data-intention-component="ScssStyleCard"] .scss-style-copy {
+  margin: 0;
+  color: rgba(239, 255, 249, 0.7);
+  line-height: 1.65;
+}
+intention-root[data-intention-ssr] [data-intention-component="ScssStyleCard"] .scss-style-action {
+  justify-self: start;
+  align-self: end;
+  padding: 10px 16px;
+  color: #10231f;
+  background: #9ff3d7;
+  border-radius: 999px;
+  font-weight: 850;
+}
     </style>
   </head>
   <body>
-    <intention-root data-intention-ssr data-route="*"><main class="intent-ssr intent-ssr-site" data-intention-kind="site"><div class="intent-ssr-component" data-intention-component="Navigation"><nav class="intent-ssr intent-ssr-navbar" data-intention-kind="navbar"><div class="intent-ssr-component" data-intention-component="Logo"><div class="intent-ssr intent-ssr-brand" data-intention-kind="brand">Intention</div><div class="intent-ssr intent-ssr-badge" data-intention-kind="badge">v0.6</div></div><div class="intent-ssr intent-ssr-navlinks" data-intention-kind="navLinks"><a class="intent-ssr intent-ssr-button" data-intention-kind="button" href="/Intention-site/#features">Pourquoi</a><a class="intent-ssr intent-ssr-button" data-intention-kind="button" href="/Intention-site/docs">Guide</a><a class="intent-ssr intent-ssr-button" data-intention-kind="button" href="/Intention-site/reference">Référence</a><a class="intent-ssr intent-ssr-button" data-intention-kind="button" href="/Intention-site/#start">Essayer</a></div></nav></div><section class="intent-ssr intent-ssr-sectionblock" data-intention-kind="sectionBlock"><p class="intent-ssr intent-ssr-eyebrow" data-intention-kind="eyebrow">Erreur 404</p><h2 class="intent-ssr intent-ssr-sectiontitle" data-intention-kind="sectionTitle">Cette page n&#39;existe pas.</h2><p class="intent-ssr intent-ssr-sectionlead" data-intention-kind="sectionLead">La route NotFound: &quot;*&quot; a rendu cette réponse côté serveur avec un vrai statut HTTP 404.</p><div class="intent-ssr intent-ssr-actions" data-intention-kind="actions"><a class="intent-ssr intent-ssr-button" data-intention-kind="button" href="/Intention-site/">Revenir à l&#39;accueil</a><a class="intent-ssr intent-ssr-button" data-intention-kind="button" href="/Intention-site/docs">Lire la documentation</a></div></section><div class="intent-ssr-component" data-intention-component="Footer"><footer class="intent-ssr intent-ssr-footer" data-intention-kind="footer"><div class="intent-ssr-component" data-intention-component="Logo"><div class="intent-ssr intent-ssr-brand" data-intention-kind="brand">Intention</div><div class="intent-ssr intent-ssr-badge" data-intention-kind="badge">v0.6</div></div><p class="intent-ssr intent-ssr-message" data-intention-kind="message">Pensé pour rendre le développement frontend accessible, sans renoncer à la puissance.</p><span class="intent-ssr intent-ssr-text" data-intention-kind="text">© 2026 Intention</span></footer></div></main></intention-root>
+    <intention-root data-intention-ssr data-route="*"><div class="intent-ssr-component" data-intention-component="NotFound"><div class="intent-ssr-component" data-intention-component="SiteShell"><div class="intent-ssr-component" data-intention-component="Navigation"><div class="intent-ssr-component" data-intention-component="SiteNavbar"><div class="intent-ssr intent-ssr-row navbar" data-intention-kind="row"><div class="intent-ssr-component" data-intention-component="Logo"><div class="intent-ssr-component" data-intention-component="BrandMark"><img class="intent-ssr intent-ssr-image brand" data-intention-kind="image" src="/Intention-site/assets/intention-logo-curved.png" alt="Intention"><img class="intent-ssr intent-ssr-image ribbon" data-intention-kind="image" src="/Intention-site/assets/intention-ribbon.png" alt="Intention"></div><wa-badge class="intent-ssr intent-ssr-wa-badge" data-intention-kind="wa-badge" variant="brand" pill>v0.8</wa-badge></div><div class="intent-ssr-component" data-intention-component="NavLinks"><wa-button class="intent-ssr intent-ssr-wa-button" data-intention-kind="wa-button" href="/Intention-site/#features" appearance="plain">Pourquoi</wa-button><wa-button class="intent-ssr intent-ssr-wa-button" data-intention-kind="wa-button" href="/Intention-site/#styles" appearance="plain">Styles</wa-button><wa-button class="intent-ssr intent-ssr-wa-button" data-intention-kind="wa-button" href="/Intention-site/docs" appearance="plain">Guide</wa-button><wa-button class="intent-ssr intent-ssr-wa-button" data-intention-kind="wa-button" href="/Intention-site/reference" appearance="plain">Référence</wa-button><wa-button class="intent-ssr intent-ssr-wa-button" data-intention-kind="wa-button" href="/Intention-site/#start" variant="brand" appearance="filled" pill>Essayer</wa-button></div></div></div></div><div class="intent-ssr-component" data-intention-component="MarketingSection"><section class="intent-ssr intent-ssr-section section soft" data-intention-kind="section"><div class="intent-ssr-component" data-intention-component="Eyebrow"><p class="intent-ssr intent-ssr-message" data-intention-kind="message">Erreur 404</p></div><div class="intent-ssr-component" data-intention-component="SectionTitle"><h2 class="intent-ssr intent-ssr-heading" data-intention-kind="heading">Cette page n&#39;existe pas.</h2></div><div class="intent-ssr-component" data-intention-component="SectionLead"><p class="intent-ssr intent-ssr-message" data-intention-kind="message">La route NotFound: &quot;*&quot; a rendu cette réponse côté serveur avec un vrai statut HTTP 404.</p></div><div class="intent-ssr-component" data-intention-component="ActionRow"><wa-button class="intent-ssr intent-ssr-wa-button" data-intention-kind="wa-button" href="/Intention-site/" variant="brand" appearance="filled" pill>Revenir à l&#39;accueil</wa-button><wa-button class="intent-ssr intent-ssr-wa-button" data-intention-kind="wa-button" href="/Intention-site/docs" appearance="outlined" pill>Lire la documentation</wa-button></div></section></div><div class="intent-ssr-component" data-intention-component="Footer"><div class="intent-ssr-component" data-intention-component="SiteFooter"><div class="intent-ssr-component" data-intention-component="Logo"><div class="intent-ssr-component" data-intention-component="BrandMark"><img class="intent-ssr intent-ssr-image brand" data-intention-kind="image" src="/Intention-site/assets/intention-logo-curved.png" alt="Intention"><img class="intent-ssr intent-ssr-image ribbon" data-intention-kind="image" src="/Intention-site/assets/intention-ribbon.png" alt="Intention"></div><wa-badge class="intent-ssr intent-ssr-wa-badge" data-intention-kind="wa-badge" variant="brand" pill>v0.8</wa-badge></div><p class="intent-ssr intent-ssr-message" data-intention-kind="message">Pensé pour rendre le développement frontend accessible, sans renoncer à la puissance.</p><span class="intent-ssr intent-ssr-text" data-intention-kind="text">© 2026 Intention</span></div></div></div></div></intention-root>
     <script type="module" src="/Intention-site/app.js"></script>
   </body>
 </html>
