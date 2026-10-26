@@ -4,7 +4,7 @@ import "./vendor/webawesome/components/button/button.js";
 import "./vendor/webawesome/components/card/card.js";
 import "./vendor/webawesome/components/copy-button/copy-button.js";
 import "./vendor/webawesome/components/tag/tag.js";
-import { startIntention } from "./intention-runtime.js?v=6c41cde9f2";
+import { startIntention } from "./intention-runtime.js?v=0fdae225cf";
 
 const program = {
   "version": "0.8",
@@ -30382,7 +30382,8 @@ const program = {
       "ssrStyles": ""
     }
   ],
-  "basePath": "/Intention-site"
+  "basePath": "/Intention-site",
+  "assetVersion": "8b2dd593dc"
 };
 
 setBasePath(new URL("./vendor/webawesome/", import.meta.url).href);

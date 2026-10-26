@@ -1,4 +1,4 @@
-import { compileLookCss, lookClassNames } from "./intention-looks.js";
+import { compileLookCss, lookClassNames } from "./intention-looks.js?v=0fdae225cf";
 
 const nativeElements = {
   button: { tag: "button" },
@@ -1177,8 +1177,9 @@ function ensureCodeBlockElement() {
 function ensurePlaygroundElement() {
   ensureCodeBlockElement();
   if (typeof customElements === "undefined" || customElements.get("intention-playground")) return;
-  const parserUrl = new URL("./intention-parser.js", import.meta.url).href;
-  const runtimeUrl = new URL("./intention-runtime.js", import.meta.url).href;
+  const moduleVersion = new URL(import.meta.url).search;
+  const parserUrl = new URL(`./intention-parser.js${moduleVersion}`, import.meta.url).href;
+  const runtimeUrl = import.meta.url;
 
   customElements.define("intention-playground", class extends HTMLElement {
     static observedAttributes = ["code", "label", "description"];
